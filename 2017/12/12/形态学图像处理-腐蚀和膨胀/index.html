@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="freedomDR">
 <meta property="og:description" content="预备知识  腐蚀假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$ 膨胀假设集合A和B， B对A的膨胀定义为 $A \oplus B">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-12T15:57:17.107Z">
+<meta property="og:updated_time" content="2017-12-13T02:42:36.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="形态学图像处理-腐蚀和膨胀">
 <meta name="twitter:description" content="预备知识  腐蚀假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$ 膨胀假设集合A和B， B对A的膨胀定义为 $A \oplus B">
@@ -274,7 +274,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="freedom">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/lufei001.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -350,7 +350,7 @@
         <p><a href="../形态学图像处理-预备知识">预备知识</a></p>
 <ul>
 <li>腐蚀<br>假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $<br>由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$</li>
-<li>膨胀<br>假设集合A和B， B对A的膨胀定义为 $A \oplus B = \{ z | [(\hat{B})_z \cap A^c] = \varnothing \}$<br>同理，B对A的膨胀是所有位移z的集合，并且以z对集合B的反射进行平移之后得到的集合与A至少有一个元素是重叠的，等价于 $A \oplus B = \{z | [(\hat{b})_z \cap A] \in A\}$</li>
+<li>膨胀<br>假设集合A和B， B对A的膨胀定义为 $A \oplus B = \{ z | [(\hat{B})_z \cap A^c] = \varnothing \}$<br>同理，B对A的膨胀是所有位移z的集合，并且以z对集合B的反射进行平移之后得到的集合与A至少有一个元素是重叠的，等价于 $A \oplus B = \{z | [(\hat{b})_z \cap A] \subseteq A\}$</li>
 </ul>
 <hr>
 <p>由定义易证，膨胀和腐蚀关于集合求补运算和反射运算是对偶的，即</p>
@@ -456,6 +456,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/lufei001.png"
+                alt="freedom" />
+            
               <p class="site-author-name" itemprop="name">freedom</p>
               <p class="site-description motion-element" itemprop="description">一些记录</p>
           </div>
@@ -467,7 +471,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -990,7 +994,7 @@
             }
           }
 
-          if ('auto' === 'manual') {
+          if ('auto' === 'auto') {
             input.addEventListener('input', inputEventFunction);
           } else {
             $('.search-icon').click(inputEventFunction);
