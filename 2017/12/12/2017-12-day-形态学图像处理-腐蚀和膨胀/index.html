@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数字图像处理," />
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="一些记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="预备知识  腐蚀假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$ 膨胀假设集合A和B， B对A的膨胀定义为 $A \oplus B">
+<meta name="keywords" content="数字图像处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="形态学图像处理-腐蚀和膨胀">
+<meta property="og:url" content="http://yoursite.com/2017/12/12/2017-12-day-形态学图像处理-腐蚀和膨胀/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="一些记录">
+<meta property="og:description" content="预备知识  腐蚀假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$ 膨胀假设集合A和B， B对A的膨胀定义为 $A \oplus B">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-29T16:23:28.770Z">
+<meta property="og:updated_time" content="2017-12-13T02:42:36.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="一些记录">
+<meta name="twitter:title" content="形态学图像处理-腐蚀和膨胀">
+<meta name="twitter:description" content="预备知识  腐蚀假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$ 膨胀假设集合A和B， B对A的膨胀定义为 $A \oplus B">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/12/2017-12-day-形态学图像处理-腐蚀和膨胀/"/>
 
 
 
 
 
-  <title>categories | freedomDR</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>形态学图像处理-腐蚀和膨胀 | freedomDR</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -256,40 +257,168 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-day-形态学图像处理-腐蚀和膨胀/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 5 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/selenium/">selenium</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英语/">英语</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件工程/">软件工程</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/软件工程/标准/">标准</a><span class="category-list-count">1</span></li></ul></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">形态学图像处理-腐蚀和膨胀</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T22:52:10+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/12/2017-12-day-形态学图像处理-腐蚀和膨胀/" class="leancloud_visitors" data-flag-title="形态学图像处理-腐蚀和膨胀">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p><a href="../形态学图像处理-预备知识">预备知识</a></p>
+<ul>
+<li>腐蚀<br>假设集合A和B， B对A的腐蚀定义为 $A \ominus B = \{ z | (B)_z \subseteq A \} $<br>由定义可以看出，B对A的腐蚀是一个用z平移的B包含在A中的所有点z的集合，等价于 $A \ominus B = \{ z | (B)_z \cap A^c = \varnothing \}$</li>
+<li>膨胀<br>假设集合A和B， B对A的膨胀定义为 $A \oplus B = \{ z | [(\hat{B})_z \cap A^c] = \varnothing \}$<br>同理，B对A的膨胀是所有位移z的集合，并且以z对集合B的反射进行平移之后得到的集合与A至少有一个元素是重叠的，等价于 $A \oplus B = \{z | [(\hat{b})_z \cap A] \subseteq A\}$</li>
+</ul>
+<hr>
+<p>由定义易证，膨胀和腐蚀关于集合求补运算和反射运算是对偶的，即</p>
+<blockquote>
+<p>$(A \ominus B)^c = A^c \oplus \hat{B}$<br>$(A \oplus B)^c = A^c \ominus \hat{B}$</p>
+</blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数字图像处理/" rel="tag"># 数字图像处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/02/2017-12-day-CMMI简单基础/" rel="next" title="CMMI简单基础">
+                <i class="fa fa-chevron-left"></i> CMMI简单基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/12/2017-12-day-形态学图像处理-预备知识/" rel="prev" title="形态学图像处理-预备知识">
+                形态学图像处理-预备知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -1017,7 +1146,7 @@
         showTime(Counter);
       }
     });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
 
 
@@ -1029,6 +1158,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
