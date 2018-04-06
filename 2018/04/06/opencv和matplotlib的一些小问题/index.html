@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python3,opencv3,matplotlib," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="一些记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="freedomDR">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+<meta name="description" content="问题参考  opencv当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是我们常见的RGB形式保存。 matplotlib当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。 解决方法 BGR —-&amp;gt; RGB b, g, r = cv2.split(img)">
+<meta name="keywords" content="python3,opencv3,matplotlib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv和matplotlib的一些小问题">
+<meta property="og:url" content="http://yoursite.com/2018/04/06/opencv和matplotlib的一些小问题/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="一些记录">
+<meta property="og:description" content="问题参考  opencv当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是我们常见的RGB形式保存。 matplotlib当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。 解决方法 BGR —-&amp;gt; RGB b, g, r = cv2.split(img)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-06T11:32:23.320Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="freedomDR">
-<meta name="twitter:description" content="一些记录">
+<meta name="twitter:title" content="opencv和matplotlib的一些小问题">
+<meta name="twitter:description" content="问题参考  opencv当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是我们常见的RGB形式保存。 matplotlib当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。 解决方法 BGR —-&amp;gt; RGB b, g, r = cv2.split(img)">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/06/opencv和matplotlib的一些小问题/"/>
 
 
 
 
 
-  <title>归档 | freedomDR</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>opencv和matplotlib的一些小问题 | freedomDR</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,370 +255,194 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/opencv和matplotlib的一些小问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">opencv和matplotlib的一些小问题</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T18:49:03+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 10 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工程/" itemprop="url" rel="index">
+                    <span itemprop="name">工程</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2018/04/06/opencv和matplotlib的一些小问题/" class="leancloud_visitors" data-flag-title="opencv和matplotlib的一些小问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/15/形态学图像处理-基本形态学算法/" itemprop="url">
-              
-                <span itemprop="name">形态学图像处理-基本形态学算法</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-15T11:14:23+08:00"
-              content="2017-12-15" >
-          12-15
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/15/2017-12-day-形态学图像处理-击中和击不中变换/" itemprop="url">
-              
-                <span itemprop="name">形态学图像处理-击中和击不中变换</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-15T10:37:54+08:00"
-              content="2017-12-15" >
-          12-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/13/2017-12-day-形态学图像处理-开操作与闭操作/" itemprop="url">
-              
-                <span itemprop="name">形态学图像处理-开操作与闭操作</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-13T10:33:06+08:00"
-              content="2017-12-13" >
-          12-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/12/2017-12-day-形态学图像处理-预备知识/" itemprop="url">
-              
-                <span itemprop="name">形态学图像处理-预备知识</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-12T23:24:45+08:00"
-              content="2017-12-12" >
-          12-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><a href="https://stackoverflow.com/questions/15072736/extracting-a-region-from-an-image-using-slicing-in-python-opencv/15074748#15074748" target="_blank" rel="external">问题参考</a></p>
+<ul>
+<li>opencv<br>当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是<br>我们常见的RGB形式保存。</li>
+<li>matplotlib<br>当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。</li>
+<li>解决方法 <strong>BGR —-&gt; RGB</strong><ul>
+<li>b, g, r = cv2.split(img)<br> img = cv2.merge([r, g, b]) 从代码来看，就是更换顺序再合并</li>
+<li>img = img[:, :, ::-1] or img = img[…, ::-1] 这种方式利用了numpy的切片操作， 代码就是反转第三位数列</li>
+<li>img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 调用官方API</li>
+</ul>
+</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/12/2017-12-day-形态学图像处理-腐蚀和膨胀/" itemprop="url">
-              
-                <span itemprop="name">形态学图像处理-腐蚀和膨胀</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-12T22:52:10+08:00"
-              content="2017-12-12" >
-          12-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/02/2017-12-day-CMMI简单基础/" itemprop="url">
-              
-                <span itemprop="name">CMMI简单基础</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-02T22:25:57+08:00"
-              content="2017-12-02" >
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/30/2017-11-day-selenium使用/" itemprop="url">
-              
-                <span itemprop="name">selenium简单基础</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-30T11:41:39+08:00"
-              content="2017-11-30" >
-          11-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/29/2017-11-day-小橘子/" itemprop="url">
-              
-                <span itemprop="name">小橘子</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-29T23:38:02+08:00"
-              content="2017-11-29" >
-          11-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/09/2017-11-day-计算机网络/" itemprop="url">
-              
-                <span itemprop="name">计算机网络</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-09T14:36:31+08:00"
-              content="2017-11-09" >
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/opencv3/" rel="tag"># opencv3</a>
+          
+            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/形态学图像处理-基本形态学算法/" rel="next" title="形态学图像处理-基本形态学算法">
+                <i class="fa fa-chevron-left"></i> 形态学图像处理-基本形态学算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -624,6 +450,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -866,6 +696,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
