@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="freedomDR">
 <meta property="og:description" content="问题参考  opencv当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是我们常见的RGB形式保存。 matplotlib当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。 解决方法 BGR —-&amp;gt; RGB b, g, r = cv2.split(img)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T11:01:50.745Z">
+<meta property="og:updated_time" content="2018-04-09T11:03:35.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="opencv和matplotlib的一些小问题">
 <meta name="twitter:description" content="问题参考  opencv当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是我们常见的RGB形式保存。 matplotlib当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。 解决方法 BGR —-&amp;gt; RGB b, g, r = cv2.split(img)">
@@ -375,7 +375,7 @@
 <li>matplotlib<br>当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。</li>
 <li>解决方法 <strong>BGR —-&gt; RGB</strong><ul>
 <li>b, g, r = cv2.split(img)<br> img = cv2.merge([r, g, b]) 从代码来看，就是更换顺序再合并</li>
-<li>img = img[:, :, ::-1] or img = img[…, ::-1] 这种方式利用了numpy的切片操作， 代码就是反转第三维数列，ps（img数据类型要注意，为np.ndarray）</li>
+<li>img = img[:, :, ::-1] or img = img[…, ::-1] 这种方式利用了numpy的切片操作， 代码就是反转第三维数列，（img数据类型要注意，为np.ndarray）</li>
 <li>img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 调用官方API</li>
 </ul>
 </li>
