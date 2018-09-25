@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="数字图像处理," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="一些基本概念的简单阐述：$Z^2$表示二维整数空间。$\hat{B}$表示集合B的反射，即 $\hat{B} = \{ w | w = -b , b \in B\}$。$(B)_z$表示集合B在点z的基础上平移之后形成的集合，即 $(B)_z = \{ c | c = b + z, b \in B\}$。">
-<meta name="keywords" content="数字图像处理">
+<meta name="description" content="图像的导数在图像处理中占有重要作用，它在图像分割领域是一种很好用的处理手段。接下来详细介绍一下它的原理及实现，首先我们先从问题入手。边缘模型首先我们会把彩色图转换为灰度图像，在此基础上讨论边缘模型。它可以大致分为三类：  台阶型 我们从数字角度来表示这种边缘，例如{0,,,0,255,,,255},它对应于一阶导数的极值点和二阶导数的零点 斜坡形 例如 {0,…,128,…,255}， 屋顶型 例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="形态学图像处理-预备知识">
-<meta property="og:url" content="http://yoursite.com/2017/12/12/2017-12-day-形态学图像处理-预备知识/index.html">
+<meta property="og:title" content="图像导数">
+<meta property="og:url" content="http://yoursite.com/2018/05/28/图像导数/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="一些基本概念的简单阐述：$Z^2$表示二维整数空间。$\hat{B}$表示集合B的反射，即 $\hat{B} = \{ w | w = -b , b \in B\}$。$(B)_z$表示集合B在点z的基础上平移之后形成的集合，即 $(B)_z = \{ c | c = b + z, b \in B\}$。">
+<meta property="og:description" content="图像的导数在图像处理中占有重要作用，它在图像分割领域是一种很好用的处理手段。接下来详细介绍一下它的原理及实现，首先我们先从问题入手。边缘模型首先我们会把彩色图转换为灰度图像，在此基础上讨论边缘模型。它可以大致分为三类：  台阶型 我们从数字角度来表示这种边缘，例如{0,,,0,255,,,255},它对应于一阶导数的极值点和二阶导数的零点 斜坡形 例如 {0,…,128,…,255}， 屋顶型 例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-15T02:35:04.099Z">
+<meta property="og:updated_time" content="2018-05-29T03:18:52.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="形态学图像处理-预备知识">
-<meta name="twitter:description" content="一些基本概念的简单阐述：$Z^2$表示二维整数空间。$\hat{B}$表示集合B的反射，即 $\hat{B} = \{ w | w = -b , b \in B\}$。$(B)_z$表示集合B在点z的基础上平移之后形成的集合，即 $(B)_z = \{ c | c = b + z, b \in B\}$。">
+<meta name="twitter:title" content="图像导数">
+<meta name="twitter:description" content="图像的导数在图像处理中占有重要作用，它在图像分割领域是一种很好用的处理手段。接下来详细介绍一下它的原理及实现，首先我们先从问题入手。边缘模型首先我们会把彩色图转换为灰度图像，在此基础上讨论边缘模型。它可以大致分为三类：  台阶型 我们从数字角度来表示这种边缘，例如{0,,,0,255,,,255},它对应于一阶导数的极值点和二阶导数的零点 斜坡形 例如 {0,…,128,…,255}， 屋顶型 例">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/12/2017-12-day-形态学图像处理-预备知识/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/28/图像导数/"/>
 
 
 
 
 
-  <title>形态学图像处理-预备知识 | freedomDR</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>图像导数 | freedomDR</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -269,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-day-形态学图像处理-预备知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/图像导数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="freedom">
@@ -286,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">形态学图像处理-预备知识</h1>
+          <h1 class="post-title" itemprop="name headline">图像导数</h1>
         
 
         <div class="post-meta">
@@ -298,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T23:24:45+08:00">
-                2017-12-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T23:25:08+08:00">
+                2018-05-28
               </time>
             
 
@@ -316,7 +315,7 @@
 
           
           
-             <span id="/2017/12/12/2017-12-day-形态学图像处理-预备知识/" class="leancloud_visitors" data-flag-title="形态学图像处理-预备知识">
+             <span id="/2018/05/28/图像导数/" class="leancloud_visitors" data-flag-title="图像导数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -347,7 +346,27 @@
       
 
       
-        <p>一些基本概念的简单阐述：<br>$Z^2$表示二维整数空间。<br>$\hat{B}$表示集合B的反射，即 $\hat{B} = \{ w | w = -b , b \in B\}$。<br>$(B)_z$表示集合B在点z的基础上平移之后形成的集合，即 $(B)_z = \{ c | c = b + z, b \in B\}$。</p>
+        <p>图像的导数在图像处理中占有重要作用，它在图像分割领域是一种很好用的处理手段。接下来详细介绍一下它的原理及实现，首先我们先从问题入手。<br>边缘模型<br>首先我们会把彩色图转换为灰度图像，在此基础上讨论边缘模型。它可以大致分为三类：</p>
+<ul>
+<li>台阶型 我们从数字角度来表示这种边缘，例如{0,,,0,255,,,255},它对应于一阶导数的极值点和二阶导数的零点</li>
+<li>斜坡形 例如 {0,…,128,…,255}，</li>
+<li>屋顶型 例如 {0,255,255,255,0}</li>
+</ul>
+<hr>
+<ul>
+<li>一阶微分算子<ul>
+<li>梯度算子<br>  它的表达式为 $G[f(x,y)]=\left[\begin{array}{c} \frac{\partial f}{\partial x} \\\ \frac{\partial f}{\partial y} \end{array}\right]$<br>  该向量有一个重要的几何性质，它指出了 f 在位置(x,y)处的最大变化率的方向。<br>  对应到离散形式，它的表达式为$g_x = \frac{\partial f(x,y)}{\partial x} = f(x+1, y) - f(x,y)$和$g_y = \frac{\partial f(x,y)}{\partial y} = f(x, y+1) - f(x,y)$</li>
+<li>robert 算子<br>  它是优先使用对角线优势的模板，它的模板为$\left[\begin{array}{cc} -1&amp;0 \\ 0&amp;1 \end{array}\right]$$\left[\begin{array}{cc} 0&amp;-1 \\ 1&amp;0 \end{array}\right]$</li>
+<li>prewitt 算子<br>  robert算子在计算关于中心点对称的边缘模板计算时不是很有用。prewitt算子的模板为$\left[\begin{array}{ccc} -1&amp;-1&amp;-1 \\ 0&amp;0&amp;0 \\ 1&amp;1&amp;1\end{array}\right]$ 和 $\left[\begin{array}{ccc} -1&amp;0&amp;1 \\ -1&amp;0&amp;1 \\ -1&amp;0&amp;1\end{array}\right]$ </li>
+<li>sobel 算子<br>  它在prewitt算子的基础上部分权重变成了2，可以对噪声有一定的抑制作用，它的模板为$\left[\begin{array}{ccc} -1&amp;-2&amp;-1 \\ 0&amp;0&amp;0 \\ 1&amp;2&amp;1\end{array}\right]$ 和 $\left[\begin{array}{ccc} -1&amp;0&amp;1 \\ -2&amp;0&amp;2 \\ -1&amp;0&amp;1\end{array}\right]$</li>
+<li>scharr 算子<br>  它比sobel算子计算更有效，opencv提供了这种实现，模板为$\left[\begin{array}{ccc} -3&amp;-10&amp;-3 \\ 0&amp;0&amp;0 \\ 3&amp;10&amp;3\end{array}\right]$ 和 $\left[\begin{array}{ccc} -3&amp;0&amp;3 \\ -10&amp;0&amp;10 \\ -3&amp;0&amp;3\end{array}\right]$</li>
+</ul>
+</li>
+<li>二阶微分算子<ul>
+<li>laplacian 算子</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -363,12 +382,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/数字图像处理/" rel="tag"># 数字图像处理</a>
-          
-        </div>
-      
 
       
       
@@ -378,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/12/2017-12-day-形态学图像处理-腐蚀和膨胀/" rel="next" title="形态学图像处理-腐蚀和膨胀">
-                <i class="fa fa-chevron-left"></i> 形态学图像处理-腐蚀和膨胀
+              <a href="/2018/04/27/数学证明总结/" rel="next" title="数学证明总结">
+                <i class="fa fa-chevron-left"></i> 数学证明总结
               </a>
             
           </div>
@@ -388,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/13/2017-12-day-形态学图像处理-开操作与闭操作/" rel="prev" title="形态学图像处理-开操作与闭操作">
-                形态学图像处理-开操作与闭操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/25/fenwick树/" rel="prev" title="fenwick树">
+                fenwick树 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
