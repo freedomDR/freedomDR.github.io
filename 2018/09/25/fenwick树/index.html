@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。典型应用：求逆序对数量">
+<meta name="description" content="关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。12345678910111213fenwick = [0]*(max_len+1)def lowbit(x):    return x&amp;amp;(-x)def add(pos, value):    while pos &amp;lt;= max_len:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fenwick树">
 <meta property="og:url" content="http://yoursite.com/2018/09/25/fenwick树/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。典型应用：求逆序对数量">
+<meta property="og:description" content="关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。12345678910111213fenwick = [0]*(max_len+1)def lowbit(x):    return x&amp;amp;(-x)def add(pos, value):    while pos &amp;lt;= max_len:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-28T01:20:03.960Z">
+<meta property="og:updated_time" content="2018-10-09T09:29:15.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fenwick树">
-<meta name="twitter:description" content="关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。典型应用：求逆序对数量">
+<meta name="twitter:description" content="关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。12345678910111213fenwick = [0]*(max_len+1)def lowbit(x):    return x&amp;amp;(-x)def add(pos, value):    while pos &amp;lt;= max_len:">
 
 
 
@@ -346,7 +346,8 @@
       
 
       
-        <p>关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改<br>这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。<br>典型应用：求逆序对数量</p>
+        <p>关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改<br>这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fenwick = [<span class="number">0</span>]*(max_len+<span class="number">1</span>)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lowbit</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x&amp;(-x)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(pos, value)</span>:</span></div><div class="line">    <span class="keyword">while</span> pos &lt;= max_len:</div><div class="line">        fenwick[pos] += value</div><div class="line">        pos += lowbit(pos)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(pos)</span>:</span></div><div class="line">    res = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> pos != <span class="number">0</span>:</div><div class="line">        res += fenwick[pos]</div><div class="line">        pos -= lowbit(pos)</div><div class="line">    <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
+<p>典型应用：求逆序对数量</p>
 
       
     </div>
@@ -381,6 +382,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/10/09/快速幂/" rel="prev" title="快速幂">
+                快速幂 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -408,6 +413,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -451,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
