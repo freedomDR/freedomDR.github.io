@@ -282,6 +282,1053 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/22/path/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/22/path/" itemprop="url">minimum path</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T18:05:29+08:00">
+                2018-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/22/path/" class="leancloud_visitors" data-flag-title="minimum path">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>刚见这道题时，这场比赛刚刚结束，赛后看了一下，难道是从左下角往右上角dfs，就开始XJBDFS，结果显然是错的。<br>看了题解才发现是动态规划。-_-动态规划一直都不会，最后终于看懂了题解。<br>这道题其实两次对角线遍历，假设坐标原点为左下角的位置，就相当于y=x左右平移。这道题很检验代码水平，功底好很快就写完了<br>差的话像我一样写了5个小时。。。。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> matrix[<span class="number">2050</span>][<span class="number">2050</span>], ans[<span class="number">2050</span>];</div><div class="line"><span class="keyword">int</span> dp[<span class="number">2050</span>][<span class="number">2050</span>], v[<span class="number">2050</span>][<span class="number">2050</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n, k;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;<span class="built_in">scanf</span>(<span class="string">"%s"</span>, matrix[i]+<span class="number">1</span>);&#125;</div><div class="line">    <span class="keyword">int</span> a_sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2050</span>; i++) dp[i][<span class="number">0</span>] = dp[<span class="number">0</span>][i] = <span class="number">1e9</span>;</div><div class="line">    dp[<span class="number">0</span>][<span class="number">1</span>]=dp[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</div><div class="line">            dp[i][j] = min(dp[i<span class="number">-1</span>][j], dp[i][j<span class="number">-1</span>]) + (matrix[i][j]!=<span class="string">'a'</span>);</div><div class="line">            <span class="keyword">if</span>(dp[i][j]&lt;=k) a_sum = max(a_sum, i+j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= a_sum; i++) ans[i] = <span class="string">'a'</span>;</div><div class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; t;</div><div class="line">    <span class="keyword">int</span> ii = <span class="number">0</span>, jj = <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(a_sum<span class="number">-2</span>+<span class="number">1</span> &gt; n) &#123;ii = n; jj = a_sum - n;&#125; </div><div class="line">    <span class="keyword">else</span> &#123;ii = a_sum<span class="number">-1</span>;&#125;</div><div class="line">    <span class="keyword">for</span>(;jj &lt;= n &amp;&amp; ii &gt;= <span class="number">1</span>; ii--, jj++) <span class="keyword">if</span>(dp[ii][jj] == k) v[ii][jj] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(a_sum == <span class="number">0</span>) &#123;v[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;ans[<span class="number">2</span>] = matrix[<span class="number">1</span>][<span class="number">1</span>];&#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = max(<span class="number">3</span>, a_sum+<span class="number">1</span>); i &lt; <span class="number">2</span>*n + <span class="number">1</span>; i++)&#123;</div><div class="line">        <span class="keyword">int</span> minn = <span class="string">'z'</span>;</div><div class="line">        <span class="keyword">int</span> ii = i - <span class="number">2</span>, jj = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(i<span class="number">-1</span> &gt; n) &#123;ii = n;jj=i<span class="number">-1</span>-n;&#125;</div><div class="line">        <span class="keyword">for</span>(; ii &gt;= <span class="number">1</span> &amp;&amp; jj &lt;= n; ii--, jj++)&#123;</div><div class="line">            <span class="keyword">if</span>(ii &lt; n &amp;&amp; v[ii][jj]) minn = min(minn, (<span class="keyword">int</span>)matrix[ii+<span class="number">1</span>][jj]);</div><div class="line">            <span class="keyword">if</span>(jj &lt; n &amp;&amp; v[ii][jj]) minn = min(minn, (<span class="keyword">int</span>)matrix[ii][jj+<span class="number">1</span>]);</div><div class="line">        &#125;</div><div class="line">        ans[i]=minn;</div><div class="line">        ii = i - <span class="number">2</span>, jj = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(i<span class="number">-1</span> &gt; n) &#123;ii = n;jj=i<span class="number">-1</span>-n;&#125;</div><div class="line">        <span class="keyword">for</span>(; ii &gt;= <span class="number">1</span> &amp;&amp; jj &lt;= n; ii--, jj++)&#123;</div><div class="line">            <span class="keyword">if</span>(ii &lt; n &amp;&amp; v[ii][jj] &amp;&amp; matrix[ii+<span class="number">1</span>][jj] == minn) v[ii+<span class="number">1</span>][jj] = <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span>(jj &lt; n &amp;&amp; v[ii][jj] &amp;&amp; matrix[ii][jj+<span class="number">1</span>] == minn) v[ii][jj+<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, ans+<span class="number">2</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/22/cf1072D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/22/cf1072D/" itemprop="url">path</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-22T18:05:29+08:00">
+                2018-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/22/cf1072D/" class="leancloud_visitors" data-flag-title="path">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/21/codeforces记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/codeforces记录/" itemprop="url">codeforces记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T19:16:09+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/21/codeforces记录/" class="leancloud_visitors" data-flag-title="codeforces记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>cf517(div2)排名破天荒的到了六分之一，加了132分，摆脱了小学生的称号。。。不敢想象，继续努力，今后刷更高质量的题，不能刷水题找快感了-_-</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/21/c-记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/c-记录/" itemprop="url">c++记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T18:13:33+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/21/c-记录/" class="leancloud_visitors" data-flag-title="c++记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://zh.cppreference.com/w/cpp/language/operator_precedence" target="_blank" rel="external">运算符优先级</a><br>今天做题时写if判断时 表达式为 (a&amp;b == c)，一直逻辑不对，查阅才发现==的优先级大于位运算符，看来不确定的都得加上括号-_-</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/19/0-1bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/19/0-1bfs/" itemprop="url">0-1bfs</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T11:11:08+08:00">
+                2018-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/19/0-1bfs/" class="leancloud_visitors" data-flag-title="0-1bfs">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有用的链接 <a href="https://www.geeksforgeeks.org/0-1-bfs-shortest-path-binary-graph/" target="_blank" rel="external">0-1bfs</a><br>求某一个点到其它点的最短距离，类似于dijkstra算法，不过这个图或者树它的每条边的权重都为0或1，所以有更快的<br>方法可以解决最短路径问题，可以使用队列去解决这个问题，如果边的权重为0，我们把点放在队首，否则放在队尾。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE 9</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> to, weight;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">vector</span>&lt;Node&gt; edges[SIZE];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">zeroOneBFS</span><span class="params">(<span class="keyword">int</span> start)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> dist[SIZE];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; SIZE; i++) dist[i] = INT_MAX;</div><div class="line">    <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; Q;</div><div class="line">    dist[start] = <span class="number">0</span>;</div><div class="line">    Q.push_back(start);</div><div class="line">    <span class="keyword">while</span>(!Q.empty())&#123;</div><div class="line">        <span class="keyword">int</span> v = Q.front();</div><div class="line">        Q.pop_front();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; edges[v].size(); i++)&#123;</div><div class="line">            <span class="keyword">if</span>(dist[edges[v][i].to] &gt; dist[v] + edges[v][i].weight)&#123;</div><div class="line">                dist[edges[v][i].to] = dist[v]+ edges[v][i].weight;</div><div class="line">                <span class="keyword">if</span>(edges[v][i].weight == <span class="number">0</span>) Q.push_front(edges[v][i].to);</div><div class="line">                <span class="keyword">else</span> Q.push_back(edges[v][i].to);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; SIZE; i++) <span class="built_in">cout</span>&lt;&lt;dist[i]&lt;&lt;<span class="string">" "</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> wt)</span></span>&#123;</div><div class="line">    edges[u].push_back(&#123;v, wt&#125;);</div><div class="line">    edges[v].push_back(&#123;u, wt&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	addEdge(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>); </div><div class="line">	addEdge(<span class="number">0</span>, <span class="number">7</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">1</span>, <span class="number">7</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>); </div><div class="line">	addEdge(<span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>); </div><div class="line">	addEdge(<span class="number">2</span>, <span class="number">8</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">6</span>, <span class="number">7</span>, <span class="number">1</span>); </div><div class="line">	addEdge(<span class="number">7</span>, <span class="number">8</span>, <span class="number">1</span>);</div><div class="line">    zeroOneBFS(<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/16/排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/16/排序/" itemprop="url">排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T15:18:55+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/16/排序/" class="leancloud_visitors" data-flag-title="排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>-_- 会常见的大部分排序，这种会的都总结一下，有些虽然简单但还是手写记录一下<br><figure class="highlight python"><figcaption><span>插入排序</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(arr)</span>:</span></div><div class="line">    res = [arr[<span class="number">0</span>]]</div><div class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> arr[<span class="number">1</span>:]:</div><div class="line">        f = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> p, rv <span class="keyword">in</span> enumerate(res):</div><div class="line">            <span class="keyword">if</span> v &lt; rv:</div><div class="line">                res.insert(p, v)</div><div class="line">                f = <span class="keyword">True</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f: res.append(v)</div><div class="line">    <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/15/scrapy记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/15/scrapy记录/" itemprop="url">scrapy记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T14:17:50+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/15/scrapy记录/" class="leancloud_visitors" data-flag-title="scrapy记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>request 和 response 在交互数据时可以通过，设置meta参数，注意不要和特定参数重复<br>其实文档特别详细，随手翻文档就行了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/15/vim小技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/15/vim小技巧/" itemprop="url">vim小技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T10:45:02+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/15/vim小技巧/" class="leancloud_visitors" data-flag-title="vim小技巧">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记录功能: q{寄存器}{一系列命令}q 重复: @{寄存器}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/14/docker总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -364,7 +1411,7 @@
       
         
           
-            <p>docker-machine 相关的常用命令:start,stop,ls<br>swarm 有主机和从机之分,主机上运行 可以通过docker-machine ssh [主机名] “docker swarm init –advertise-addr [主机ip]“ 从机的命令会有提示<br>docker run 例子 docker run –name some-name –rm -d –link container:database -p 8080:8080 image<br>dockerfile文件运行过程可以引用官网的一幅图说明:<br><img src="https://docs.docker.com/storage/storagedriver/images/container-layers.jpg" alt="dockerfile"><br>官网有详细的文档说明，参考<a href="https://docs.docker.com/storage/storagedriver/#images-and-layers" target="_blank" rel="external">dockerfile运行过程</a></p>
+            <p>docker-machine 相关的常用命令:start,stop,ls<br>swarm 有主机和从机之分,主机上运行 可以通过docker-machine ssh [主机名] “docker swarm init –advertise-addr [主机ip]“ 从机的命令会有提示<br>docker run 例子 docker run –name some-name –rm -d -v source_abs_path:container_path –link container_name:another_name(代表ip地址) -p 8080:8080 image<br>dockerfile文件运行过程可以引用官网的一幅图说明:<br><img src="https://docs.docker.com/storage/storagedriver/images/container-layers.jpg" alt="dockerfile"><br>官网有详细的文档说明，参考<a href="https://docs.docker.com/storage/storagedriver/#images-and-layers" target="_blank" rel="external">dockerfile运行过程</a></p>
 
           
         
@@ -531,1147 +1578,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/10/linux常用工具命令记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/10/linux常用工具命令记录/" itemprop="url">linux常用工具命令记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T16:30:33+08:00">
-                2018-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/10/10/linux常用工具命令记录/" class="leancloud_visitors" data-flag-title="linux常用工具命令记录">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>curl 下载文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl url -o file_name --progress</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/09/快速幂/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/快速幂/" itemprop="url">快速幂</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T17:14:48+08:00">
-                2018-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/10/09/快速幂/" class="leancloud_visitors" data-flag-title="快速幂">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>利用二进制和位运算的方式快速求幂<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">pow</span><span class="params">(a, b)</span>:</span></div><div class="line">    res, base = <span class="number">1</span>, b</div><div class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</div><div class="line">        <span class="keyword">if</span> b&amp;<span class="number">1</span> == <span class="number">1</span>: res *= base</div><div class="line">        base *= base</div><div class="line">        b &gt;&gt;= <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/09/25/fenwick树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/fenwick树/" itemprop="url">fenwick树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T15:32:44+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/09/25/fenwick树/" class="leancloud_visitors" data-flag-title="fenwick树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>关键可以在$O(\log n)$时间内求得数组任意前缀和，同时支持动态单点值的修改<br>这个数可以用一个一维数组表示（1～n）， 第i项表示前i项的和。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fenwick = [<span class="number">0</span>]*(max_len+<span class="number">1</span>)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lowbit</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x&amp;(-x)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(pos, value)</span>:</span></div><div class="line">    <span class="keyword">while</span> pos &lt;= max_len:</div><div class="line">        fenwick[pos] += value</div><div class="line">        pos += lowbit(pos)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(pos)</span>:</span></div><div class="line">    res = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> pos != <span class="number">0</span>:</div><div class="line">        res += fenwick[pos]</div><div class="line">        pos -= lowbit(pos)</div><div class="line">    <span class="keyword">return</span> res</div></pre></td></tr></table></figure></p>
-<p>典型应用：求逆序对数量</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/05/28/图像导数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/28/图像导数/" itemprop="url">图像导数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T23:25:08+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/05/28/图像导数/" class="leancloud_visitors" data-flag-title="图像导数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>图像的导数在图像处理中占有重要作用，它在图像分割领域是一种很好用的处理手段。接下来详细介绍一下它的原理及实现，首先我们先从问题入手。<br>边缘模型<br>首先我们会把彩色图转换为灰度图像，在此基础上讨论边缘模型。它可以大致分为三类：</p>
-<ul>
-<li>台阶型 我们从数字角度来表示这种边缘，例如{0,,,0,255,,,255},它对应于一阶导数的极值点和二阶导数的零点</li>
-<li>斜坡形 例如 {0,…,128,…,255}，</li>
-<li>屋顶型 例如 {0,255,255,255,0}</li>
-</ul>
-<hr>
-<ul>
-<li>一阶微分算子<ul>
-<li>梯度算子<br>  它的表达式为 $G[f(x,y)]=\left[\begin{array}{c}\ \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \end{array}\right]$<br>  该向量有一个重要的几何性质，它指出了 f 在位置(x,y)处的最大变化率的方向。<br>  对应到离散形式，它的表达式为$g_x = \frac{\partial f(x,y)}{\partial x} = f(x+1, y) - f(x,y)$和$g_y = \frac{\partial f(x,y)}{\partial y} = f(x, y+1) - f(x,y)$</li>
-<li>robert 算子<br>  它是优先使用对角线优势的模板，它的模板为$\left[\begin{array}{cc} -1&amp;0 \\ 0&amp;1 \end{array}\right]$$\left[\begin{array}{cc} 0&amp;-1 \\ 1&amp;0 \end{array}\right]$</li>
-<li>prewitt 算子<br>  robert算子在计算关于中心点对称的边缘模板计算时不是很有用。prewitt算子的模板为$\left[\begin{array}{ccc} -1&amp;-1&amp;-1 \\ 0&amp;0&amp;0 \\ 1&amp;1&amp;1\end{array}\right]$ 和 $\left[\begin{array}{ccc} -1&amp;0&amp;1 \\ -1&amp;0&amp;1 \\ -1&amp;0&amp;1\end{array}\right]$ </li>
-<li>sobel 算子<br>  它在prewitt算子的基础上部分权重变成了2，可以对噪声有一定的抑制作用，它的模板为$\left[\begin{array}{ccc} -1&amp;-2&amp;-1 \\ 0&amp;0&amp;0 \\ 1&amp;2&amp;1\end{array}\right]$ 和 $\left[\begin{array}{ccc} -1&amp;0&amp;1 \\ -2&amp;0&amp;2 \\ -1&amp;0&amp;1\end{array}\right]$</li>
-<li>scharr 算子<br>  它比sobel算子计算更有效，opencv提供了这种实现，模板为$\left[\begin{array}{ccc} -3&amp;-10&amp;-3 \\ 0&amp;0&amp;0 \\ 3&amp;10&amp;3\end{array}\right]$ 和 $\left[\begin{array}{ccc} -3&amp;0&amp;3 \\ -10&amp;0&amp;10 \\ -3&amp;0&amp;3\end{array}\right]$</li>
-</ul>
-</li>
-<li>二阶微分算子<ul>
-<li>laplacian 算子</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/04/27/数学证明总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/27/数学证明总结/" itemprop="url">数学证明总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T12:41:10+08:00">
-                2018-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/27/数学证明总结/" class="leancloud_visitors" data-flag-title="数学证明总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>收敛<br>  首先可以证明有界性，再证明单调性。这是一个基本的思路，单调性也可以分情况讨论。其实简单的总结来说，即使极限收敛里面的判别准则之一， <strong>单调有限数列必有极限</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/04/27/高斯滤波/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/27/高斯滤波/" itemprop="url">高斯滤波</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T10:43:35+08:00">
-                2018-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/27/高斯滤波/" class="leancloud_visitors" data-flag-title="高斯滤波">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>高斯滤波</p>
-<ul>
-<li>数学原理<ul>
-<li>公式<br>  一维公式 $G(x) =  \frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{x^2}{2\sigma^2}}$<br>  二维公式 $G(x, y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2+y^2}{2\sigma^2}}$<br>*</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/04/20/数论的小知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/数论的小知识/" itemprop="url">数论的小知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T16:03:25+08:00">
-                2018-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/20/数论的小知识/" class="leancloud_visitors" data-flag-title="数论的小知识">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>费马小定理<br>维基百科 <a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86" target="_blank" rel="external">费马小定理</a></li>
-<li>欧拉定理<br>维基百科 <a href="https://zh.wikipedia.org/wiki/欧拉定理" target="_blank" rel="external">欧拉定理</a><br>欧拉定理是费马小定理的推广</li>
-</ul>
-<hr>
-<p>利用欧拉定理可以方便的求摸倒数，若a，n为正整数，且a，n互素，<br>则 $ a^{\varphi(n)} \  \equiv \  1 \; (\; mod \; n \; )$<br>其中 $\varphi(n)$ 为欧拉函数，欧拉函数是小于或等于n的正整数中与n互质的数的数目。<br>若n为素数，$\varphi(n) = n - 1$, 故 $a^{n-1} \equiv 1 \; (mod \; n)$, 即 $a*a^{n-2} \equiv 1 \; (mod \; n)$,<br>所以 $a^{-1}\%n = a^{n-2}\%n$</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/04/06/opencv和matplotlib的一些小问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/06/opencv和matplotlib的一些小问题/" itemprop="url">opencv和matplotlib的一些小问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T18:49:03+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工程/" itemprop="url" rel="index">
-                    <span itemprop="name">工程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/06/opencv和matplotlib的一些小问题/" class="leancloud_visitors" data-flag-title="opencv和matplotlib的一些小问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://stackoverflow.com/questions/15072736/extracting-a-region-from-an-image-using-slicing-in-python-opencv/15074748#15074748" target="_blank" rel="external">问题参考</a></p>
-<ul>
-<li>opencv<br>当调用opencv的imread函数读取图像时，若读取彩色图像，返回的彩色图像以BGR顺序保存，而不是<br>我们常见的RGB形式保存。</li>
-<li>matplotlib<br>当调用pylot的imshow函数显示彩色图像时，默认是以RGB形式显示的，所以用opencv打开的图像需要做进一步处理方可正常显示。</li>
-<li>解决方法 <strong>BGR —-&gt; RGB</strong><ul>
-<li>b, g, r = cv2.split(img)<br> img = cv2.merge([r, g, b]) 从代码来看，就是更换顺序再合并</li>
-<li>img = img[:, :, ::-1] or img = img[…, ::-1] 这种方式利用了numpy的切片操作， 代码就是反转第三维数列，（img数据类型要注意，为np.ndarray）</li>
-<li>img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 调用官方API</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1721,7 +1632,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1743,7 +1654,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
