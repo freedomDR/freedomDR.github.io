@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的级别">
+<meta name="description" content="首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。 唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。 刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的">
 <meta name="keywords" content="bfs,dfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php的dfs和bfs">
 <meta property="og:url" content="https://freedomdr.github.io/2018/11/07/php的dfs和bfs/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的级别">
+<meta property="og:description" content="首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。 唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。 刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T05:15:16.938Z">
+<meta property="og:updated_time" content="2018-11-08T02:39:47.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php的dfs和bfs">
-<meta name="twitter:description" content="首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的级别">
+<meta name="twitter:description" content="首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。 唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。 刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的">
 
 
 
@@ -361,7 +361,7 @@
       
 
       
-        <p>首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。<br>唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。<br>刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的级别了。又开始在bfs时加了个层数标记，下完之后一看，<br>TMD没保存用户和用户之间的上下级关系。唉，直接循环一个一个找吧，感觉卧槽这不是给后来的维护人挖坑（ps可能根本不会有人接手了），算了自己也看不下去这种垃圾代码，多写写吧。<br>然后又开始找php语法，thinkphp函数，每天遨游在api之间QAQ（I hate it）<br>。。。mmp vim的寄存器拿不出来。</p>
+        <p>首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。 唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。 刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的级别了。又开始在bfs时加了个层数标记，下完之后一看， TMD没保存用户和用户之间的上下级关系。唉，直接循环一个一个找吧，感觉卧槽这不是给后来的维护人挖坑（ps可能根本不会有人接手了），算了自己也看不下去这种垃圾代码，多写写吧。 然后又开始找php语法，thinkphp函数，每天遨游在api之间QAQ（I hate it）<br>。。。mmp vim的寄存器拿不出来。</p>
 <h4 id="引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数，-array-unshift-array-push"><a href="#引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数，-array-unshift-array-push" class="headerlink" title="引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数， array_unshift, array_push"></a>引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数， array_unshift, array_push</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_select</span><span class="params">($user_id=<span class="number">0</span>)</span></span>&#123;</span><br><span class="line">    $all_id = <span class="keyword">array</span>();</span><br><span class="line">    $queue_id = <span class="keyword">array</span>($user_id);</span><br><span class="line">    $temp_id = <span class="keyword">array</span>();</span><br><span class="line">    $level = <span class="number">0</span>;</span><br><span class="line">    $res = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="keyword">empty</span>($queue_id))&#123;</span><br><span class="line">        $temp_id = <span class="keyword">array</span>();</span><br><span class="line">        $level += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(!<span class="keyword">empty</span>($queue_id))&#123;</span><br><span class="line">            $p_id = array_pop($queue_id);</span><br><span class="line">            <span class="comment">//$tmp_id = Db::name('admin_users')-&gt;where('parent_id', $p_id)-&gt;column('user_id', 'user_name','nick_name');</span></span><br><span class="line">            $tmp_id = Db::name(<span class="string">'admin_users'</span>)-&gt;where(<span class="string">'parent_id'</span>, $p_id)-&gt;select();</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">empty</span>($tmp_id))&#123;&#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">foreach</span>($tmp_id <span class="keyword">as</span> $item)&#123;</span><br><span class="line">                    array_unshift($temp_id, $item[<span class="string">'user_id'</span>]); </span><br><span class="line">                    array_push($all_id, [$item[<span class="string">'user_id'</span>], $item[<span class="string">'parent_id'</span>], $item[<span class="string">'nick_name'</span>], <span class="string">'level'</span>=&gt;$level, <span class="string">'child_num'</span>=&gt;count($tmp_id)]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        $queue_id = $temp_id;</span><br><span class="line">    &#125;</span><br><span class="line">    $level -= <span class="number">1</span>;</span><br><span class="line">    $res = <span class="string">''</span>;</span><br><span class="line">    <span class="comment">//dump('--------------');</span></span><br><span class="line">    <span class="comment">//dump($level);</span></span><br><span class="line">    $res[$user_id] = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>($all_id <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        <span class="keyword">if</span>($v[<span class="string">'level'</span>] != $level)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">empty</span>($res[$v[<span class="number">0</span>]])) $res[$v[<span class="number">0</span>]] = <span class="keyword">array</span>();		</span><br><span class="line">            array_unshift($res[$v[<span class="number">1</span>]], $v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//dump($res);</span></span><br><span class="line">    $first_s = Db::name(<span class="string">'admin_users'</span>)-&gt;where(<span class="string">'user_id'</span>, $user_id)-&gt;find();</span><br><span class="line">    <span class="comment">//dump($first_s);</span></span><br><span class="line">    $res_str = <span class="string">"&lt;option value='"</span>.$first_s[<span class="string">'user_id'</span>].<span class="string">"'&gt;"</span>.$first_s[<span class="string">'nick_name'</span>].<span class="string">"&lt;/option&gt;"</span>;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;dfs($res,$user_id, $res_str);</span><br><span class="line">    <span class="comment">//dump($res_str);</span></span><br><span class="line">    <span class="keyword">return</span> $res_str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dfs</span><span class="params">($arr,$id, &amp;$res, $level = <span class="number">0</span>)</span></span>&#123;</span><br><span class="line">    <span class="comment">//dump($level);</span></span><br><span class="line">    <span class="comment">//dump($arr[$id]);</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">empty</span>($arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">foreach</span>($arr[$id] <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        $prefix = str_repeat(<span class="string">'&amp;nbsp;-|&amp;nbsp;'</span>, $v[<span class="string">'level'</span>]);</span><br><span class="line">        $str = <span class="string">"&lt;option value='"</span>.$v[<span class="number">0</span>].<span class="string">"'&gt;"</span>.$prefix.$v[<span class="number">2</span>].<span class="string">"&lt;/option&gt;"</span>;</span><br><span class="line">    <span class="comment">//	dump($str);</span></span><br><span class="line">        $res .= $str;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;dfs($arr, $v[<span class="number">0</span>], $res, $level+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -404,6 +404,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/08/python的GIL/" rel="prev" title="python的GIL">
+                python的GIL <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -485,7 +489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +500,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -507,7 +511,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
