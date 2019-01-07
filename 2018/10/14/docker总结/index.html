@@ -90,7 +90,7 @@
 <meta property="og:description" content="docker-machine 相关的常用命令:start,stop,lsswarm 有主机和从机之分,主机上运行 可以通过docker-machine ssh [主机名] “docker swarm init –advertise-addr [主机ip]“ 从机的命令会有提示docker run 例子 docker run –name some-name –rm -d -v source_abs_">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://docs.docker.com/storage/storagedriver/images/container-layers.jpg">
-<meta property="og:updated_time" content="2018-10-15T03:18:39.304Z">
+<meta property="og:updated_time" content="2018-12-29T06:24:33.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker总结">
 <meta name="twitter:description" content="docker-machine 相关的常用命令:start,stop,lsswarm 有主机和从机之分,主机上运行 可以通过docker-machine ssh [主机名] “docker swarm init –advertise-addr [主机ip]“ 从机的命令会有提示docker run 例子 docker run –name some-name –rm -d -v source_abs_">
@@ -363,7 +363,7 @@
       
 
       
-        <p>docker-machine 相关的常用命令:start,stop,ls<br>swarm 有主机和从机之分,主机上运行 可以通过docker-machine ssh [主机名] “docker swarm init –advertise-addr [主机ip]“ 从机的命令会有提示<br>docker run 例子 docker run –name some-name –rm -d -v source_abs_path:container_path –link container_name:another_name(代表ip地址) -p 8080:8080 image<br>dockerfile文件运行过程可以引用官网的一幅图说明:<br><img src="https://docs.docker.com/storage/storagedriver/images/container-layers.jpg" alt="dockerfile"><br>官网有详细的文档说明，参考<a href="https://docs.docker.com/storage/storagedriver/#images-and-layers" target="_blank" rel="noopener">dockerfile运行过程</a></p>
+        <p>docker-machine 相关的常用命令:start,stop,ls<br>swarm 有主机和从机之分,主机上运行 可以通过docker-machine ssh [主机名] “docker swarm init –advertise-addr [主机ip]“ 从机的命令会有提示<br>docker run 例子 docker run –name some-name –rm -d -v source_abs_path:container_path –link container_name:another_name(代表ip地址) -p 8080:8080 image<br>docker 进入正在运行的容器内部, docker exec -it [容器名或者容器ID] /bin/bash<br>dockerfile文件运行过程可以引用官网的一幅图说明:<br><img src="https://docs.docker.com/storage/storagedriver/images/container-layers.jpg" alt="dockerfile"><br>官网有详细的文档说明，参考<a href="https://docs.docker.com/storage/storagedriver/#images-and-layers" target="_blank" rel="noopener">dockerfile运行过程</a></p>
 
       
     </div>
@@ -479,7 +479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +548,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

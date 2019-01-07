@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="freedomDR">
 <meta property="og:description" content="mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)详细介绍,密码强度依次增高.设置为0: set validate_password_policy=0;创建用户: create user ‘test‘@’localhost’ identified by ‘test’;用户授权: grant all on data">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-28T09:55:03.880Z">
+<meta property="og:updated_time" content="2018-12-29T06:21:24.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql用户相关问题">
 <meta name="twitter:description" content="mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)详细介绍,密码强度依次增高.设置为0: set validate_password_policy=0;创建用户: create user ‘test‘@’localhost’ identified by ‘test’;用户授权: grant all on data">
@@ -360,7 +360,7 @@
       
 
       
-        <p>mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)<a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">详细介绍</a>,密码强度依次增高.设置为0: set validate_password_policy=0;<br>创建用户: create user ‘test‘@’localhost’ identified by ‘test’;<br>用户授权: grant all on database.* to ‘test‘@’127.0.0.1’;<br>查看某个表的属性: describe 表名</p>
+        <p>mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)<a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">详细介绍</a>,密码强度依次增高.设置为0: set validate_password_policy=0;<br>创建用户: create user ‘test‘@’localhost’ identified by ‘test’;<br>用户授权: grant all on database.* to ‘test‘@’127.0.0.1’;<br>查看某个表的属性: describe 表名<br>数据库迁移: mysqldump -u test -p database &gt; mysql.sql; mysqldump -u test -p database &lt; mysql.sql</p>
 
       
     </div>
@@ -394,6 +394,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/07/python的repr和str/" rel="prev" title="python的repr和str">
+                python的repr和str <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -466,7 +470,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -535,7 +539,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

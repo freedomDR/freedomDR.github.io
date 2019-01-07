@@ -282,6 +282,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/01/07/python的repr和str/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/07/python的repr和str/" itemprop="url">python的repr和str</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-07T10:52:05+08:00">
+                2019-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/07/python的repr和str/" class="leancloud_visitors" data-flag-title="python的repr和str">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://docs.python.org/3/library/functions.html" target="_blank" rel="noopener">repr, eval, str</a><br>stackoverflow有一篇很好的回答，<a href="https://stackoverflow.com/questions/1436703/difference-between-str-and-repr/1436756" target="_blank" rel="noopener">区别</a><br>人们常常在单元测试中确保<strong>eval(repr(object))==object</strong><br>看了很多，repr表现出来的是让开发者看到怎么定义它，str表现出来的是它的值（或者一些信息）.<br>我们可以通过python的内置类轻易地看到这一点区别<br><img src="/images/repr_str_different.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/12/28/mysql用户相关问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -364,7 +495,7 @@
       
         
           
-            <p>mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)<a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">详细介绍</a>,密码强度依次增高.设置为0: set validate_password_policy=0;<br>创建用户: create user ‘test‘@’localhost’ identified by ‘test’;<br>用户授权: grant all on database.* to ‘test‘@’127.0.0.1’;<br>查看某个表的属性: describe 表名</p>
+            <p>mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)<a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">详细介绍</a>,密码强度依次增高.设置为0: set validate_password_policy=0;<br>创建用户: create user ‘test‘@’localhost’ identified by ‘test’;<br>用户授权: grant all on database.* to ‘test‘@’127.0.0.1’;<br>查看某个表的属性: describe 表名<br>数据库迁移: mysqldump -u test -p database &gt; mysql.sql; mysqldump -u test -p database &lt; mysql.sql</p>
 
           
         
@@ -1536,137 +1667,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/11/08/python的GIL/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/08/python的GIL/" itemprop="url">python的GIL</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T10:39:38+08:00">
-                2018-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/08/python的GIL/" class="leancloud_visitors" data-flag-title="python的GIL">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1719,7 +1719,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1788,7 +1788,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
