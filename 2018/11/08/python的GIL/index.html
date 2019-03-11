@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="python,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧">
+<meta name="description" content="看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧GIL的历史由来已久，简单说就是当时计算机都是单核的，并没有过多考虑多核的情况。GIL是一把大锁，无法利用多核并行的优势，这个全局解释器的锁只有一个，也就是说在某个时刻，拥有这个锁的代码才能运行，这在多核CPU中同一时刻，代码只能在一个CPU上跑。所以效率比">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python的GIL">
 <meta property="og:url" content="https://freedomdr.github.io/2018/11/08/python的GIL/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧">
+<meta property="og:description" content="看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧GIL的历史由来已久，简单说就是当时计算机都是单核的，并没有过多考虑多核的情况。GIL是一把大锁，无法利用多核并行的优势，这个全局解释器的锁只有一个，也就是说在某个时刻，拥有这个锁的代码才能运行，这在多核CPU中同一时刻，代码只能在一个CPU上跑。所以效率比">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-08T02:42:30.571Z">
+<meta property="og:updated_time" content="2019-01-09T14:15:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python的GIL">
-<meta name="twitter:description" content="看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧">
+<meta name="twitter:description" content="看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧GIL的历史由来已久，简单说就是当时计算机都是单核的，并没有过多考虑多核的情况。GIL是一把大锁，无法利用多核并行的优势，这个全局解释器的锁只有一个，也就是说在某个时刻，拥有这个锁的代码才能运行，这在多核CPU中同一时刻，代码只能在一个CPU上跑。所以效率比">
 
 
 
@@ -322,6 +323,39 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/GIL/" itemprop="url" rel="index">
+                    <span itemprop="name">GIL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -360,7 +394,7 @@
       
 
       
-        <p>看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧</p>
+        <p>看的资料越多越懵逼，大神的文章看不太懂，平常的文章对同一个概念有不同的理解（ps 分不清对错了），懵逼ing， 先把这部分搁置一下，再慢慢写吧<br>GIL的历史由来已久，简单说就是当时计算机都是单核的，并没有过多考虑多核的情况。GIL是一把大锁，无法利用多核并行的优势，这个全局解释器的锁只有一个，也就是说在某个时刻，拥有这个锁的代码才能运行，这在多核CPU中同一时刻，代码只能在一个CPU上跑。所以效率比较低。<br>解决方法还是有一点的，比如可以利用多进程，c扩展释放锁。<br><a href="https://docs.python.org/3/faq/library.html#can-t-we-get-rid-of-the-global-interpreter-lock" target="_blank" rel="noopener">相关资料</a></p>
 
       
     </div>
@@ -375,6 +409,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
       
 
       
@@ -470,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -481,7 +521,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
