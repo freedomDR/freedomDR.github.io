@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="InnoDB是一个平衡高可用性和高性能的通用存储引擎.InnoDB有四个主要的优点(来自于mysql官方文档):  它的DML操作支持ACID特性,运用事物特性去保护用户的数据. 行级别的锁和oracle风格一致性读写可以增加多用户的并发性能. InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集索引让主键查询更加高效. InnoDB支持外键约束,可以确保数据的完整性.">
+<meta name="description" content="InnoDB是一个平衡高可用性和高性能的通用存储引擎.mysql创建表时如果不指定引擎,默认使用InnoDB引擎(mysql8.0).InnoDB有四个主要的优点(来自于mysql官方文档):  它的DML操作支持ACID特性,运用事务特性去保护用户的数据. 行级别的锁和oracle风格一致性读写可以增加多用户的并发性能. InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql的InnoDB引擎">
 <meta property="og:url" content="https://freedomdr.github.io/2019/03/11/mysql的InnoDB引擎/index.html">
 <meta property="og:site_name" content="freedomDR">
-<meta property="og:description" content="InnoDB是一个平衡高可用性和高性能的通用存储引擎.InnoDB有四个主要的优点(来自于mysql官方文档):  它的DML操作支持ACID特性,运用事物特性去保护用户的数据. 行级别的锁和oracle风格一致性读写可以增加多用户的并发性能. InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集索引让主键查询更加高效. InnoDB支持外键约束,可以确保数据的完整性.">
+<meta property="og:description" content="InnoDB是一个平衡高可用性和高性能的通用存储引擎.mysql创建表时如果不指定引擎,默认使用InnoDB引擎(mysql8.0).InnoDB有四个主要的优点(来自于mysql官方文档):  它的DML操作支持ACID特性,运用事务特性去保护用户的数据. 行级别的锁和oracle风格一致性读写可以增加多用户的并发性能. InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-11T14:09:39.754Z">
+<meta property="og:updated_time" content="2019-03-18T08:22:53.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql的InnoDB引擎">
-<meta name="twitter:description" content="InnoDB是一个平衡高可用性和高性能的通用存储引擎.InnoDB有四个主要的优点(来自于mysql官方文档):  它的DML操作支持ACID特性,运用事物特性去保护用户的数据. 行级别的锁和oracle风格一致性读写可以增加多用户的并发性能. InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集索引让主键查询更加高效. InnoDB支持外键约束,可以确保数据的完整性.">
+<meta name="twitter:description" content="InnoDB是一个平衡高可用性和高性能的通用存储引擎.mysql创建表时如果不指定引擎,默认使用InnoDB引擎(mysql8.0).InnoDB有四个主要的优点(来自于mysql官方文档):  它的DML操作支持ACID特性,运用事务特性去保护用户的数据. 行级别的锁和oracle风格一致性读写可以增加多用户的并发性能. InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集">
 
 
 
@@ -360,23 +360,37 @@
       
 
       
-        <p>InnoDB是一个平衡高可用性和高性能的通用存储引擎.InnoDB有四个主要的优点(来自于mysql官方文档):</p>
+        <p>InnoDB是一个平衡高可用性和高性能的通用存储引擎.mysql创建表时如果不指定引擎,默认使用InnoDB引擎(mysql8.0).InnoDB有四个主要的优点(来自于mysql官方文档):</p>
 <ul>
-<li>它的<a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-introduction.html#Key%20Advantages%20of%20InnoDB" target="_blank" rel="noopener">DML</a>操作支持ACID特性,运用事物特性去保护用户的数据.</li>
+<li>它的<a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-introduction.html#Key%20Advantages%20of%20InnoDB" target="_blank" rel="noopener">DML</a>操作支持ACID特性,运用事务特性去保护用户的数据.</li>
 <li>行级别的锁和oracle风格一致性读写可以增加多用户的并发性能.</li>
 <li>InnoDB的表会整理硬盘上的数据去优化基于主键的查询,每个表都有一个聚集索引让主键查询更加高效.</li>
 <li>InnoDB支持外键约束,可以确保数据的完整性.</li>
 </ul>
 <hr>
+<p>Innodb一些额外的特点:</p>
+<ul>
+<li>当服务器由于断电崩溃时,无论MySQL处于什么状态,当你再次启动时,它都会恢复到最后一次提交事务的状态</li>
+<li>它在内存中有一个自己的数据缓冲池,频繁访问的数据会被放到缓冲迟中</li>
+<li>innodb不允许并发同时读写一个数据表</li>
+<li>自适应哈希索引</li>
+<li>它所能处理的一个表的容量高达2GB</li>
+</ul>
+<hr>
 <p>InnoDB的ACID模型</p>
 <ul>
-<li>原子性(atomicity)主要通过事务commit, rollback操作来体现</li>
+<li>原子性(atomicity) 事务是原子性的,要么成功要么失败,主要通过commit, rollback操作来体现</li>
 <li>一致性(consistency)InnoDB的特性体现在<a href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_doublewrite_buffer" target="_blank" rel="noopener">双写缓存</a>和崩溃恢复.</li>
 <li>隔离性(isolation)可以通过设置每个事务的隔离级别来体现</li>
 <li>持久性(durability)InnoDB在在这方面依赖于具体的硬件配置.事务完成之后,仍然会保存事务的记录到非易失性存储器当中</li>
 </ul>
 <hr>
-<p>ACID(待续,需要好好看看wiki的解释)</p>
+<p>应用场景<br>显然由于InnoDB支持事务操作,所以对表的数据一致性和完整性要求比较高的应该使用InnoDB引擎.</p>
+<hr>
+<h2 id="ACID-待续-需要好好看看wiki的解释"><a href="#ACID-待续-需要好好看看wiki的解释" class="headerlink" title="ACID(待续,需要好好看看wiki的解释)"></a>ACID(待续,需要好好看看wiki的解释)</h2><p>聚集索引<br>mysql的InnoDB引擎支持聚集索引.其实聚集索引和表的主键是一个意思.</p>
+<ul>
+<li>当创建基于InnoDB的表时,若定义了主键,那么InnoDB会使用它来作为聚集索引(一般来说都用自增的列来作为主键).如果创建表时没有指定主键,mysql会自动找一个非空并且有唯一值的列作为主键.当然也有可能找不见这样的列,这种情况下mysql会自动生成一个隐藏列<br>InnoDB的聚集索引是通过B树来实现的.</li>
+</ul>
 
       
     </div>
@@ -410,6 +424,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/12/linux命令合集/" rel="prev" title="linux命令合集">
+                linux命令合集 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -464,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -482,7 +509,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -537,6 +564,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACID-待续-需要好好看看wiki的解释"><span class="nav-number">1.</span> <span class="nav-text">ACID(待续,需要好好看看wiki的解释)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
