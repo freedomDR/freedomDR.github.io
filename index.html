@@ -282,6 +282,142 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/08/19/cf1203记录/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/19/cf1203记录/" itemprop="url">cf1203记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T18:29:54+08:00">
+                2019-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/19/cf1203记录/" class="leancloud_visitors" data-flag-title="cf1203记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>题目是判断数组是否是环.找到１的位置，左右两边扫描，有一个符合就行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int q, n;</span><br><span class="line">    cin &gt;&gt; q;</span><br><span class="line">    while(q--) &#123;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        int ok = false;</span><br><span class="line">        vector&lt;int&gt; a(n);</span><br><span class="line">        int st = -1;</span><br><span class="line">        for(int i = 0; i &lt; n; i++) </span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; a[i];</span><br><span class="line">            if(a[i] == 1) st = i;    </span><br><span class="line">        &#125;</span><br><span class="line">        int j = st+1;</span><br><span class="line">        for(int i = 1; i &lt; n; i++, j++) &#123;</span><br><span class="line">            if(a[j%n] != a[(j-1)%n]+1) break;</span><br><span class="line">        &#125;</span><br><span class="line">        if(j == st+n) ok = true;</span><br><span class="line">        j = st-1;</span><br><span class="line">        for(int i = 1; i &lt; n; i++, j--) &#123;</span><br><span class="line">            if(a[(j+n)%n] != a[(j+n+1)%n]+1) break;</span><br><span class="line">        &#125;</span><br><span class="line">        if(j == st-n) ok = true;</span><br><span class="line">        cout &lt;&lt; (ok?&quot;YES&quot;:&quot;NO&quot;) &lt;&lt; endl;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>题目是求是否可以把这些变组成面积相等的矩形.首先判断边的数量是不是偶数，然后左右指针扫描判断面积是否相等.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int q, n;</span><br><span class="line">    vector&lt;int&gt; a(10010);</span><br><span class="line">    cin &gt;&gt; q;</span><br><span class="line">    while(q--) &#123;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        for(int i = 0; i &lt; 10010; i++) a[i] = 0;</span><br><span class="line">        for(int i = 0; i &lt; 4*n; i++) &#123;</span><br><span class="line">            int v; cin &gt;&gt; v;</span><br><span class="line">            a[v]++;</span><br><span class="line">        &#125;</span><br><span class="line">        bool ok = true;</span><br><span class="line">        for(int i = 0; i &lt; 10010; i++) &#123;</span><br><span class="line">            if(a[i]%2 != 0) ok = false;</span><br><span class="line">            a[i] /= 2;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ok == false) &#123;cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl; continue;&#125;</span><br><span class="line">        int l = 0, r = 10000, area = 0;</span><br><span class="line">        while(l &lt;= r) &#123;</span><br><span class="line">            while(l &lt;= r &amp;&amp; a[l] &lt;= 0) l++;</span><br><span class="line">            while(l &lt;= r &amp;&amp; a[r] &lt;= 0) r--;</span><br><span class="line">            if(l &gt; r) break;</span><br><span class="line">            a[l]--; a[r]--;</span><br><span class="line">            int t = l*r;</span><br><span class="line">            if(area == 0 || t == area) area = t;</span><br><span class="line">            else &#123;ok = false; break;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; (ok?&quot;YES&quot;:&quot;NO&quot;) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>题目意思是求所有数的公因数，输出公因数的个数.求出最大公因数，然后求最大公因数的公因数个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">long long gcd(long long a, long long b) &#123;</span><br><span class="line">    return b == 0?a:gcd(b, a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n; cin &gt;&gt; n;</span><br><span class="line">    long long g = 0;</span><br><span class="line">    for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        long long v;</span><br><span class="line">        cin &gt;&gt; v;</span><br><span class="line">        g = gcd(g, v);</span><br><span class="line">    &#125;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for(int i = 1; i * 1LL * i &lt;= g; i++) &#123;</span><br><span class="line">        if(g%i == 0) &#123;</span><br><span class="line">            ans+=2;</span><br><span class="line">            if(g/i == i) ans--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/06/12/python的file处理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1542,137 +1678,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/03/13/编译器相关知识/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/编译器相关知识/" itemprop="url">编译器相关知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T16:36:32+08:00">
-                2019-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/03/13/编译器相关知识/" class="leancloud_visitors" data-flag-title="编译器相关知识">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>gcc优化: O1&lt;O2&lt;O3&lt;O4</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1725,7 +1730,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
