@@ -282,6 +282,272 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/03/15/DNS协议详解/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/DNS协议详解/" itemprop="url">DNS协议详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T11:25:30+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/15/DNS协议详解/" class="leancloud_visitors" data-flag-title="DNS协议详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DNS协议是一个重要的协议.通常所说的dns查询都是基于udp的.udp报文在网络中的合适最大报文长度为512字节(576-64),576为rfc建议的实际网络中的最小MTU值,64为ip报文最大报头(60+4).当dns数据超过512字节时.如果过服务器端和客户端都支持EDNS协议,则使用它.否则用tcp协议来承载数据.<br>DNS查询有递归,非递归,迭代三种方式,通常这三种模式是交互使用的.非递归是利用了缓存的原理,先查询dns缓存,直接从缓存返回数据.<br>递归的话值主机查询默认的DNS服务器,如果服务器上没有对应的数据,那服务器去继续查询直到返回结果,再把结果返会给主机.<br>迭代的话当默认DNS服务器查询时可以先查询根域名服务器,返回对应的顶级域名服务器地址,默认服务器再从顶级域名服务器查询结果,这种迭代式一级一级域名的查询就是迭代查询.<br>MTU数据链路层的帧的数据长度最大值为1500,最小应该为576,两个单位都是字节<br>MSS代表TCP最大报文段长度,通常在tcp三次握手时确定</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/03/14/mysql的select优化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/14/mysql的select优化/" itemprop="url">mysql的select优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-14T15:34:19+08:00">
+                2019-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/14/mysql的select优化/" class="leancloud_visitors" data-flag-title="mysql的select优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>select优化很要．主要涉及到学会使用explain分析sql语句步骤,避免全表扫描,添加索引,运用analyze table及时更新表的信息,InnoDB和myisam的引擎的具体优化,<br>手动调整mysql的内存大小,处理锁的问题.<br>首先是where语句的优化</p>
+<ul>
+<li>对于判断条件涉及到数学运算时,尽量去除不必要的括号,变量可以直接用数字代替的用数字代替</li>
+<li>范围查询基于单列索引时可以被mysql优化器优化,有时候非常量值会被优化为常量值,例如”ab%”和”%b”会被优化为”ab%”</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/03/13/编译器相关知识/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1435,295 +1701,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/12/21/归并排序/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/21/归并排序/" itemprop="url">归并排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T17:44:17+08:00">
-                2018-12-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/sort/" itemprop="url" rel="index">
-                    <span itemprop="name">sort</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/12/21/归并排序/" class="leancloud_visitors" data-flag-title="归并排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>mdzz,连这个都不会写,++,真是个蠢<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">test_data = [<span class="number">12</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">2</span>,<span class="number">16</span>,<span class="number">259</span>,<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort_not_recursion</span><span class="params">(data)</span>:</span></span><br><span class="line">    step = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> step &lt;= len(data)//<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(data), step*<span class="number">2</span>):</span><br><span class="line">            res = []</span><br><span class="line">            left = data[i:min(i+step, len(data))]</span><br><span class="line">            right = data[min(i+step, len(data)<span class="number">-1</span>):min(i+<span class="number">2</span>*step, len(data))]</span><br><span class="line">            <span class="keyword">while</span> left <span class="keyword">and</span> right:</span><br><span class="line">                <span class="keyword">if</span> left[<span class="number">0</span>] &lt; right[<span class="number">0</span>]: res.append(left.pop(<span class="number">0</span>))</span><br><span class="line">                <span class="keyword">else</span>: res.append(right.pop(<span class="number">0</span>))</span><br><span class="line">            <span class="keyword">if</span> left: res += left</span><br><span class="line">            <span class="keyword">if</span> right: res += right</span><br><span class="line">            data[i:i+len(res)] = res</span><br><span class="line">        step += step</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">while</span> left <span class="keyword">and</span> right:</span><br><span class="line">        <span class="keyword">if</span> left[<span class="number">0</span>] &lt; right[<span class="number">0</span>]:</span><br><span class="line">            res.append(left.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res.append(right.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">if</span> left:</span><br><span class="line">        res += left</span><br><span class="line">    <span class="keyword">if</span> right:</span><br><span class="line">        res += right</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(data) &lt;= <span class="number">1</span>: <span class="keyword">return</span> data</span><br><span class="line">    mid = len(data)//<span class="number">2</span></span><br><span class="line">    left = data[:mid]</span><br><span class="line">    right = data[mid:]</span><br><span class="line">    left = merge_sort(left)</span><br><span class="line">    right = merge_sort(right)</span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br><span class="line"></span><br><span class="line">print(test_data)</span><br><span class="line">print(<span class="string">'递归'</span>, merge_sort(test_data))</span><br><span class="line">print(<span class="string">'非递归'</span>, merge_sort_not_recursion(test_data))</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/12/20/积水问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/20/积水问题/" itemprop="url">积水问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T13:17:12+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/12/20/积水问题/" class="leancloud_visitors" data-flag-title="积水问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>昨天面试一道积水问题的题目,以为做对了,回去仔细想了一下还是有问题.其实静下心来想很清楚,只用考虑每个柱子上到底能不能积水.<br>第一种直接思考,每根柱子如果小于左边的最大值并且大于右边的最小值,那它上面肯定会有积水,所以两个数组保存左右方向的最大值就行,时间复杂度为O(n),空间复杂度也为O(n)<br>第二种也是第一种的变形,只是代码稍微不一样,遍历一次就行,空间复杂度为O(1),时间复杂度为O(n)<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">n = list(map(int, input().split()))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">slove1</span><span class="params">()</span>:</span></span><br><span class="line">    ans, tmp = <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line">    lmax,rmax = [<span class="number">0</span>]*len(n), [<span class="number">0</span>]*len(n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(n)):</span><br><span class="line">        tmp = max(tmp, n[i<span class="number">-1</span>])</span><br><span class="line">        lmax[i] = tmp</span><br><span class="line">    tmp = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(n)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        tmp = max(tmp, n[i+<span class="number">1</span>])</span><br><span class="line">        rmax[i] = tmp</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(n)):</span><br><span class="line">        <span class="keyword">if</span> lmax[i] &gt; n[i] <span class="keyword">and</span> rmax[i] &gt; n[i]: ans += min(lmax[i], rmax[i]) - n[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">slove2</span><span class="params">()</span>:</span></span><br><span class="line">    l, r = <span class="number">0</span>, len(n) - <span class="number">1</span></span><br><span class="line">    lmax,rmax,ans = n[<span class="number">0</span>],n[<span class="number">-1</span>],<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        <span class="keyword">if</span> lmax &lt; rmax:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> n[l] &gt; lmax: lmax = n[l]</span><br><span class="line">            <span class="keyword">else</span>: ans += lmax - n[l]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> n[r] &gt; rmax: rmax = n[r]</span><br><span class="line">            <span class="keyword">else</span>: ans += rmax -n[r]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">print(slove1())</span><br><span class="line">print(slove2())</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1771,7 +1753,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

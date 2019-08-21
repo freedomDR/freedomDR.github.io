@@ -282,6 +282,274 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/16/排序/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/16/排序/" itemprop="url">排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T15:18:55+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/16/排序/" class="leancloud_visitors" data-flag-title="排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>-_-会常见的大部分排序，这种会的都总结一下，有些虽然简单但还是手写记录一下<br>插入排序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(len(arr) == <span class="number">0</span>): <span class="keyword">return</span> arr;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(arr)<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[j+<span class="number">1</span>]): arr[j], arr[j+<span class="number">1</span>] = arr[j+<span class="number">1</span>], arr[j]</span><br><span class="line">            <span class="keyword">else</span>: <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line">arr = random.sample(range(<span class="number">100</span>), <span class="number">10</span>)</span><br><span class="line">print(<span class="string">"origin arr is &#123;&#125;"</span>.format(arr));</span><br><span class="line">print(<span class="string">"sort arr is &#123;&#125;"</span>.format(insert_sort(arr)));</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>选择排序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(len(arr) == <span class="number">0</span>): <span class="keyword">return</span> arr;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        min_pos = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(arr)):</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&lt;arr[min_pos]): min_pos = j</span><br><span class="line">        arr[i], arr[min_pos] = arr[min_pos], arr[i]</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line">arr = random.sample(range(<span class="number">100</span>), <span class="number">10</span>)</span><br><span class="line">print(<span class="string">"origin arr is &#123;&#125;"</span>.format(arr));</span><br><span class="line">print(<span class="string">"sort arr is &#123;&#125;"</span>.format(select_sort(arr)));</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>冒泡排序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(len(arr) == <span class="number">0</span>): <span class="keyword">return</span> arr;</span><br><span class="line">    <span class="keyword">for</span> end <span class="keyword">in</span> range(len(arr), <span class="number">0</span>, <span class="number">-1</span>):</span><br><span class="line">        is_sorting = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, end):</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &lt; arr[j<span class="number">-1</span>]): </span><br><span class="line">                is_sorting = <span class="keyword">False</span></span><br><span class="line">                arr[j], arr[j<span class="number">-1</span>] = arr[j<span class="number">-1</span>], arr[j]</span><br><span class="line">        <span class="keyword">if</span>(is_sorting): <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line">arr = random.sample(range(<span class="number">100</span>), <span class="number">10</span>)</span><br><span class="line">print(<span class="string">"origin arr is &#123;&#125;"</span>.format(arr));</span><br><span class="line">print(<span class="string">"sort arr is &#123;&#125;"</span>.format(bubble_sort(arr)));</span><br></pre></td></tr></table></figure></p>
+<p>归并排序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></span><br><span class="line">    ans = []</span><br><span class="line">    <span class="keyword">while</span>(len(left)&gt;<span class="number">0</span> <span class="keyword">and</span> len(right)&gt;<span class="number">0</span>):</span><br><span class="line">        <span class="keyword">if</span>(left[<span class="number">0</span>] &gt; right[<span class="number">0</span>]):</span><br><span class="line">            ans.append(right.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans.append(left.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">if</span>(len(left)==<span class="number">0</span>): ans += right</span><br><span class="line">    <span class="keyword">else</span>: ans += left</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(arr, lo, hi)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(lo&gt;=hi): <span class="keyword">return</span> [arr[lo]]</span><br><span class="line">    mid = lo+(hi-lo)//<span class="number">2</span></span><br><span class="line">    left = merge_sort(arr, lo, mid)</span><br><span class="line">    right = merge_sort(arr, mid+<span class="number">1</span>, hi)</span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br><span class="line"></span><br><span class="line">arr = random.sample(range(<span class="number">100</span>), <span class="number">10</span>)</span><br><span class="line">print(<span class="string">"origin arr is &#123;&#125;"</span>.format(arr));</span><br><span class="line">print(<span class="string">"sort arr is &#123;&#125;"</span>.format(merge_sort(arr, <span class="number">0</span>, len(arr)<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure></p>
+<p>快速排序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(arr, lo, hi)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(lo&gt;=hi): <span class="keyword">return</span> </span><br><span class="line">    key = arr[lo];</span><br><span class="line">    i, j = lo, hi</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j):</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j <span class="keyword">and</span> arr[j]&gt;key):j-=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;j): arr[i], i = arr[j], i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;j <span class="keyword">and</span> arr[i]&lt;key):i+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;j): arr[j], j = arr[i], j<span class="number">-1</span></span><br><span class="line">    arr[i]=key</span><br><span class="line">    quick_sort(arr, lo, i<span class="number">-1</span>)</span><br><span class="line">    quick_sort(arr, i+<span class="number">1</span>, hi)</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line"></span><br><span class="line">arr = random.sample(range(<span class="number">100</span>), <span class="number">10</span>)</span><br><span class="line">print(<span class="string">"origin arr is &#123;&#125;"</span>.format(arr));</span><br><span class="line">print(<span class="string">"sort arr is &#123;&#125;"</span>.format(quick_sort(arr, <span class="number">0</span>, len(arr)<span class="number">-1</span>)));</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/15/scrapy记录/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/15/scrapy记录/" itemprop="url">scrapy记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T14:17:50+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/15/scrapy记录/" class="leancloud_visitors" data-flag-title="scrapy记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>request 和 response 在交互数据时可以通过，设置meta参数，注意不要和特定参数重复<br>其实文档特别详细，随手翻文档就行了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/10/15/vim小技巧/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1340,306 +1608,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/04/27/高斯滤波/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/27/高斯滤波/" itemprop="url">高斯滤波</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T10:43:35+08:00">
-                2018-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/27/高斯滤波/" class="leancloud_visitors" data-flag-title="高斯滤波">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>高斯滤波</p>
-<ul>
-<li>数学原理<ul>
-<li>公式<br>  一维公式 $G(x) =  \frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{x^2}{2\sigma^2}}$<br>  二维公式 $G(x, y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2+y^2}{2\sigma^2}}$<br>*</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/04/20/数论的小知识/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/数论的小知识/" itemprop="url">数论的小知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T16:03:25+08:00">
-                2018-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/20/数论的小知识/" class="leancloud_visitors" data-flag-title="数论的小知识">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>费马小定理<br>维基百科 <a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86" target="_blank" rel="noopener">费马小定理</a></li>
-<li>欧拉定理<br>维基百科 <a href="https://zh.wikipedia.org/wiki/欧拉定理" target="_blank" rel="noopener">欧拉定理</a><br>欧拉定理是费马小定理的推广</li>
-</ul>
-<hr>
-<p>利用欧拉定理可以方便的求摸倒数，若a，n为正整数，且a，n互素，则 $ a^{\varphi(n)} \  \equiv \  1 \; (\; mod \; n \; )$<br>其中 $\varphi(n)$ 为欧拉函数，欧拉函数是小于或等于n的正整数中与n互质的数的数目。<br>若n为素数，$\varphi(n) = n - 1$, 故 $a^{n-1} \equiv 1 \; (mod \; n)$, 即 $a*a^{n-2} \equiv 1 \; (mod \; n)$,<br>所以 $a^{-1}\%n = a^{n-2}\%n$</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1687,7 +1660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
