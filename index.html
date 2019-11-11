@@ -282,6 +282,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/11/04/linux的I-O复用之select机制/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/04/linux的I-O复用之select机制/" itemprop="url">linux的I/O复用之select机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T17:15:03+08:00">
+                2019-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/11/04/linux的I-O复用之select机制/" class="leancloud_visitors" data-flag-title="linux的I/O复用之select机制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/select_overview.png" alt=""><br>select被用来高效的监听多个文件描述符，去看它们是否可读，可写，条件触发。<br>其中readfds,writefds,exceptfds三个文件描述符集合用fd_set来表示。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">undef</span> __FD_SETSIZE</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __FD_SETSIZE	1024</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> fds_bits[__FD_SETSIZE / (<span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">long</span>))];</span><br><span class="line">&#125; __kernel_fd_set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> __kernel_fd_set		fd_set;</span><br></pre></td></tr></table></figure></p>
+<p>这是fd_set的定义，显然select可监听的文件描述符有限制，可以看出默认大小为1024。<br>下面是一些简单的源代码分析(linux 5.3.8)<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SYSCALL_DEFINE5(select, <span class="keyword">int</span>, n, fd_set __user *, inp, fd_set __user *, outp,</span><br><span class="line">		fd_set __user *, <span class="built_in">exp</span>, struct timeval __user *, tvp)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> kern_select(n, inp, outp, <span class="built_in">exp</span>, tvp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码是宏调用，其实是走到了kern_select这个函数<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">kern_select</span><span class="params">(<span class="keyword">int</span> n, fd_set __user *inp, fd_set __user *outp,</span></span></span><br><span class="line"><span class="function"><span class="params">		       fd_set __user *<span class="built_in">exp</span>, struct timeval __user *tvp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">timespec64</span> <span class="title">end_time</span>, *<span class="title">to</span> = <span class="title">NULL</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> <span class="title">tv</span>;</span></span><br><span class="line">	<span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (tvp) &#123;</span><br><span class="line">		<span class="keyword">if</span> (copy_from_user(&amp;tv, tvp, <span class="keyword">sizeof</span>(tv)))</span><br><span class="line">			<span class="keyword">return</span> -EFAULT;</span><br><span class="line"></span><br><span class="line">		to = &amp;end_time;</span><br><span class="line">		<span class="keyword">if</span> (poll_select_set_timeout(to,</span><br><span class="line">				tv.tv_sec + (tv.tv_usec / USEC_PER_SEC),</span><br><span class="line">				(tv.tv_usec % USEC_PER_SEC) * NSEC_PER_USEC))</span><br><span class="line">			<span class="keyword">return</span> -EINVAL;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ret = core_sys_select(n, inp, outp, <span class="built_in">exp</span>, to);</span><br><span class="line">	<span class="keyword">return</span> poll_select_finish(&amp;end_time, tvp, PT_TIMEVAL, ret);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>简单分析，可以看出先是判断超时时间timeval变量，判断它的有效性。可以看到有两个关键函数，core_sys_select和poll_select_finish。<br>先来看core_sys_select<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">core_sys_select</span><span class="params">(<span class="keyword">int</span> n, fd_set __user *inp, fd_set __user *outp,</span></span></span><br><span class="line"><span class="function"><span class="params">			   fd_set __user *<span class="built_in">exp</span>, struct timespec64 *end_time)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	fd_set_bits fds;</span><br><span class="line">	<span class="keyword">void</span> *bits;</span><br><span class="line">	<span class="keyword">int</span> ret, max_fds;</span><br><span class="line">	<span class="keyword">size_t</span> size, alloc_size;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">fdtable</span> *<span class="title">fdt</span>;</span></span><br><span class="line">	<span class="comment">/* Allocate small arguments on the stack to save memory and be faster */</span></span><br><span class="line">	<span class="keyword">long</span> stack_fds[SELECT_STACK_ALLOC/<span class="keyword">sizeof</span>(<span class="keyword">long</span>)];</span><br><span class="line"></span><br><span class="line">	ret = -EINVAL;</span><br><span class="line">	<span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">goto</span> out_nofds;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* max_fds can increase, so grab it once to avoid race */</span></span><br><span class="line">	rcu_read_lock();</span><br><span class="line">	fdt = files_fdtable(current-&gt;files);</span><br><span class="line">	max_fds = fdt-&gt;max_fds;</span><br><span class="line">	rcu_read_unlock();</span><br><span class="line">	<span class="keyword">if</span> (n &gt; max_fds)</span><br><span class="line">		n = max_fds;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * We need 6 bitmaps (in/out/ex for both incoming and outgoing),</span></span><br><span class="line"><span class="comment">	 * since we used fdset we need to allocate memory in units of</span></span><br><span class="line"><span class="comment">	 * long-words.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	size = FDS_BYTES(n);</span><br><span class="line">	bits = stack_fds;</span><br><span class="line">	<span class="keyword">if</span> (size &gt; <span class="keyword">sizeof</span>(stack_fds) / <span class="number">6</span>) &#123;</span><br><span class="line">		<span class="comment">/* Not enough space in on-stack array; must use kmalloc */</span></span><br><span class="line">		ret = -ENOMEM;</span><br><span class="line">		<span class="keyword">if</span> (size &gt; (SIZE_MAX / <span class="number">6</span>))</span><br><span class="line">			<span class="keyword">goto</span> out_nofds;</span><br><span class="line"></span><br><span class="line">		alloc_size = <span class="number">6</span> * size;</span><br><span class="line">		bits = kvmalloc(alloc_size, GFP_KERNEL);</span><br><span class="line">		<span class="keyword">if</span> (!bits)</span><br><span class="line">			<span class="keyword">goto</span> out_nofds;</span><br><span class="line">	&#125;</span><br><span class="line">	fds.in      = bits;</span><br><span class="line">	fds.out     = bits +   size;</span><br><span class="line">	fds.ex      = bits + <span class="number">2</span>*size;</span><br><span class="line">	fds.res_in  = bits + <span class="number">3</span>*size;</span><br><span class="line">	fds.res_out = bits + <span class="number">4</span>*size;</span><br><span class="line">	fds.res_ex  = bits + <span class="number">5</span>*size;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((ret = get_fd_set(n, inp, fds.in)) ||</span><br><span class="line">	    (ret = get_fd_set(n, outp, fds.out)) ||</span><br><span class="line">	    (ret = get_fd_set(n, <span class="built_in">exp</span>, fds.ex)))</span><br><span class="line">		<span class="keyword">goto</span> out;</span><br><span class="line">	zero_fd_set(n, fds.res_in);</span><br><span class="line">	zero_fd_set(n, fds.res_out);</span><br><span class="line">	zero_fd_set(n, fds.res_ex);</span><br><span class="line"></span><br><span class="line">	ret = do_select(n, &amp;fds, end_time);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (ret &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">goto</span> out;</span><br><span class="line">	<span class="keyword">if</span> (!ret) &#123;</span><br><span class="line">		ret = -ERESTARTNOHAND;</span><br><span class="line">		<span class="keyword">if</span> (signal_pending(current))</span><br><span class="line">			<span class="keyword">goto</span> out;</span><br><span class="line">		ret = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (set_fd_set(n, inp, fds.res_in) ||</span><br><span class="line">	    set_fd_set(n, outp, fds.res_out) ||</span><br><span class="line">	    set_fd_set(n, <span class="built_in">exp</span>, fds.res_ex))</span><br><span class="line">		ret = -EFAULT;</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">	<span class="keyword">if</span> (bits != stack_fds)</span><br><span class="line">		kvfree(bits);</span><br><span class="line">out_nofds:</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中有个数据结构为fd_set_bits。其中包含六个long*变量，三个为用户变量，三个为内核区变量。关键函数为do_select(),在它之前先把数据从fds从用户区复制到内核去，执行完do_select之后，在把结果复制到用户区。下面看看do_select<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">do_select</span><span class="params">(<span class="keyword">int</span> n, fd_set_bits *fds, struct timespec64 *end_time)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">ktime_t</span> expire, *to = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">poll_wqueues</span> <span class="title">table</span>;</span></span><br><span class="line">	poll_table *wait;</span><br><span class="line">	<span class="keyword">int</span> retval, i, timed_out = <span class="number">0</span>;</span><br><span class="line">	u64 slack = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">__poll_t</span> busy_flag = net_busy_loop_on() ? POLL_BUSY_LOOP : <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> busy_start = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	rcu_read_lock();</span><br><span class="line">	retval = max_select_fd(n, fds);</span><br><span class="line">	rcu_read_unlock();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (retval &lt; <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> retval;</span><br><span class="line">	n = retval;</span><br><span class="line"></span><br><span class="line">	poll_initwait(&amp;table);</span><br><span class="line">	wait = &amp;table.pt;</span><br><span class="line">	<span class="keyword">if</span> (end_time &amp;&amp; !end_time-&gt;tv_sec &amp;&amp; !end_time-&gt;tv_nsec) &#123;</span><br><span class="line">		wait-&gt;_qproc = <span class="literal">NULL</span>;</span><br><span class="line">		timed_out = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (end_time &amp;&amp; !timed_out)</span><br><span class="line">		slack = select_estimate_accuracy(end_time);</span><br><span class="line"></span><br><span class="line">	retval = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (;;) &#123;</span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">long</span> *rinp, *routp, *rexp, *inp, *outp, *<span class="built_in">exp</span>;</span><br><span class="line">		<span class="keyword">bool</span> can_busy_loop = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">		inp = fds-&gt;in; outp = fds-&gt;out; <span class="built_in">exp</span> = fds-&gt;ex;</span><br><span class="line">		rinp = fds-&gt;res_in; routp = fds-&gt;res_out; rexp = fds-&gt;res_ex;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++rinp, ++routp, ++rexp) &#123;</span><br><span class="line">			<span class="keyword">unsigned</span> <span class="keyword">long</span> in, out, ex, all_bits, bit = <span class="number">1</span>, j;</span><br><span class="line">			<span class="keyword">unsigned</span> <span class="keyword">long</span> res_in = <span class="number">0</span>, res_out = <span class="number">0</span>, res_ex = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">__poll_t</span> mask;</span><br><span class="line"></span><br><span class="line">			in = *inp++; out = *outp++; ex = *<span class="built_in">exp</span>++;</span><br><span class="line">			all_bits = in | out | ex;</span><br><span class="line">			<span class="keyword">if</span> (all_bits == <span class="number">0</span>) &#123;</span><br><span class="line">				i += BITS_PER_LONG;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; BITS_PER_LONG; ++j, ++i, bit &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="class"><span class="keyword">struct</span> <span class="title">fd</span> <span class="title">f</span>;</span></span><br><span class="line">				<span class="keyword">if</span> (i &gt;= n)</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">if</span> (!(bit &amp; all_bits))</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				f = fdget(i);</span><br><span class="line">				<span class="keyword">if</span> (f.file) &#123;</span><br><span class="line">					wait_key_set(wait, in, out, bit,</span><br><span class="line">						     busy_flag);</span><br><span class="line">					mask = vfs_poll(f.file, wait);</span><br><span class="line"></span><br><span class="line">					fdput(f);</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; POLLIN_SET) &amp;&amp; (in &amp; bit)) &#123;</span><br><span class="line">						res_in |= bit;</span><br><span class="line">						retval++;</span><br><span class="line">						wait-&gt;_qproc = <span class="literal">NULL</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; POLLOUT_SET) &amp;&amp; (out &amp; bit)) &#123;</span><br><span class="line">						res_out |= bit;</span><br><span class="line">						retval++;</span><br><span class="line">						wait-&gt;_qproc = <span class="literal">NULL</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span> ((mask &amp; POLLEX_SET) &amp;&amp; (ex &amp; bit)) &#123;</span><br><span class="line">						res_ex |= bit;</span><br><span class="line">						retval++;</span><br><span class="line">						wait-&gt;_qproc = <span class="literal">NULL</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">/* got something, stop busy polling */</span></span><br><span class="line">					<span class="keyword">if</span> (retval) &#123;</span><br><span class="line">						can_busy_loop = <span class="literal">false</span>;</span><br><span class="line">						busy_flag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">					<span class="comment">/*</span></span><br><span class="line"><span class="comment">					 * only remember a returned</span></span><br><span class="line"><span class="comment">					 * POLL_BUSY_LOOP if we asked for it</span></span><br><span class="line"><span class="comment">					 */</span></span><br><span class="line">					&#125; <span class="keyword">else</span> <span class="keyword">if</span> (busy_flag &amp; mask)</span><br><span class="line">						can_busy_loop = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (res_in)</span><br><span class="line">				*rinp = res_in;</span><br><span class="line">			<span class="keyword">if</span> (res_out)</span><br><span class="line">				*routp = res_out;</span><br><span class="line">			<span class="keyword">if</span> (res_ex)</span><br><span class="line">				*rexp = res_ex;</span><br><span class="line">			cond_resched();</span><br><span class="line">		&#125;</span><br><span class="line">		wait-&gt;_qproc = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">if</span> (retval || timed_out || signal_pending(current))</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span> (table.error) &#123;</span><br><span class="line">			retval = table.error;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/* only if found POLL_BUSY_LOOP sockets &amp;&amp; not out of time */</span></span><br><span class="line">		<span class="keyword">if</span> (can_busy_loop &amp;&amp; !need_resched()) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!busy_start) &#123;</span><br><span class="line">				busy_start = busy_loop_current_time();</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (!busy_loop_timeout(busy_start))</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		busy_flag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * If this is the first loop and we have a timeout</span></span><br><span class="line"><span class="comment">		 * given, then we convert to ktime_t and set the to</span></span><br><span class="line"><span class="comment">		 * pointer to the expiry value.</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">if</span> (end_time &amp;&amp; !to) &#123;</span><br><span class="line">			expire = timespec64_to_ktime(*end_time);</span><br><span class="line">			to = &amp;expire;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!poll_schedule_timeout(&amp;table, TASK_INTERRUPTIBLE,</span><br><span class="line">					   to, slack))</span><br><span class="line">			timed_out = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	poll_freewait(&amp;table);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> retval;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个是核心，我们看中间的无限for循环，退出的情况包括timeout,retval,signal_pending,分别是超时，有fd就绪，有其它信号来临。我们从这个循环可以看出，他是轮询判断的，每一轮判断64个fd(64位机器，每字节8位当然有些并不是要监听的fd),注意到vfs_poll()，发现是直接调用file-&gt;f_op-&gt;poll(file, pt)，而文件描述符对应的驱动调用自己的poll函数时，会调用poll_wait。查看poll_wait函数发现它是调用pt-&gt;_qproc(),也就是wait这个变量。所以wait是一个很关键的所在，wait是poll_table类型结构体，wait = &amp;table.pt, 然后我们查看它的定义(下面),发现是非常简单的,文档写的很清楚，帮助实现f_op-&gt;poll。下面我们看wait是如何初始化的，注意到它来自于table的pt，我们看看如何初始化table的，发现调用了poll_initwait()函数，里面有一个init_poll_funcptr()函数，追进去查看，很简单的一个绑定，现在关键是pqroc的实现，发现它来自于/_/_pollwait的实现，查看这个函数，发现主要是绑定pollwake唤醒函数和把wait添加到文件描述符的链表的头结点。<br><figure class="highlight c"><figcaption><span>poll.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * structures and helpers for f_op-&gt;poll implementations</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*poll_queue_proc)</span><span class="params">(struct file *, <span class="keyword">wait_queue_head_t</span> *, struct poll_table_struct *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Do not touch the structure directly, use the access functions</span></span><br><span class="line"><span class="comment"> * poll_does_not_wait() and poll_requested_events() instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">poll_table_struct</span> &#123;</span></span><br><span class="line">	poll_queue_proc _qproc;</span><br><span class="line">	<span class="keyword">__poll_t</span> _key;</span><br><span class="line">&#125; poll_table;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">poll_wait</span><span class="params">(struct file * filp, <span class="keyword">wait_queue_head_t</span> * wait_address, poll_table *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p &amp;&amp; p-&gt;_qproc &amp;&amp; wait_address)</span><br><span class="line">		p-&gt;_qproc(filp, wait_address, p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init_poll_funcptr</span><span class="params">(poll_table *pt, poll_queue_proc qproc)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	pt-&gt;_qproc = qproc;</span><br><span class="line">	pt-&gt;_key   = ~(<span class="keyword">__poll_t</span>)<span class="number">0</span>; <span class="comment">/* all events enabled */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/08/21/codeforces-1204题解/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1558,137 +1716,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2019/03/21/http相关/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/21/http相关/" itemprop="url">http相关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T08:59:00+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/03/21/http相关/" class="leancloud_visitors" data-flag-title="http相关">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>http主要版本分为0.9,1.0,1.1,2.0;<br>目前广泛使用的是http1.1.这一版本协议默认支持持久连接,对于http1.0来说,通常是在请求的包头添加Connection: Keep-Alive.持久连接主要是使用同一个TCP连接发送和接收多个http请求和应答.默认情况下服务器端会对连接时间有个限制.<br>http请求的格式: 请求行(方式 url 版本),请求头,空行,其他消息体.<br>http应答的格式:类似与请求的格式,不过请求行是由版本号,状态码,状态解释组成.<br>http压缩的通常方式时gzip和deflate,http请求会在请求头通过Accept-Encoding方法通知服务器自己可以接收什么压缩方式,http应答会通过Content-Encoding或者Transfer-Encoding来表明使用的压缩方案.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1741,7 +1768,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
