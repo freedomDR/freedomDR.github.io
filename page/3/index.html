@@ -282,6 +282,268 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/12/28/mysql用户相关问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/28/mysql用户相关问题/" itemprop="url">mysql用户相关问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T16:15:33+08:00">
+                2018-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/28/mysql用户相关问题/" class="leancloud_visitors" data-flag-title="mysql用户相关问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>mysql创建用户设置密码时有限制.因为mysql的validate_password_policy字段设置问题,有三个值(0,1,2)<a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">详细介绍</a>,密码强度依次增高.设置为0: set validate_password_policy=0;<br>创建用户: create user ‘test‘@’localhost’ identified by ‘test’;<br>用户授权: grant all on database.* to ‘test‘@’127.0.0.1’;<br>查看某个表的属性: describe 表名<br>数据库迁移: mysqldump -u test -p database &gt; mysql.sql; mysqldump -u test -p database &lt; mysql.sql</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/12/28/wsgi学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freedom">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lufei001.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freedomDR">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/28/wsgi学习/" itemprop="url">wsgi学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T11:14:20+08:00">
+                2018-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/28/wsgi学习/" class="leancloud_visitors" data-flag-title="wsgi学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>wsgi是一个服务器网关接口协议,它描述了一个web服务怎样和web应用交流, web应用怎么处理每一个request请求.它有多种实现,只是一种标准.pep3333详细介绍了wsgi<br>django里面的文档对如何使用wsgi进行部署做了详细的介绍.(uwsgi, gunicorn)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/12/27/容器原理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1439,291 +1701,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/11/07/php的dfs和bfs/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/php的dfs和bfs/" itemprop="url">php的dfs和bfs</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T12:51:27+08:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/07/php的dfs和bfs/" class="leancloud_visitors" data-flag-title="php的dfs和bfs">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先最主要的问题是语言问题，数组操作起来太麻烦，用的thinkphp，不熟悉调试过程。所以解决问题时，速度像蜗牛一样慢。 唉，你根本不知道会遇上什么样的奇怪需求，就比如这几天我碰到的一个吧，多级用户归属组设置，比如说第二级别的用户课自由改动它下属的用户的归属组，但是要低于它的级别。 刚开始想着其实一波bfs再去掉没有子节点的叶子节点就行了啊，然后开始头脑发热xjbbfs，写完一看，我擦，掉了对应的级别了。又开始在bfs时加了个层数标记，下完之后一看， TMD没保存用户和用户之间的上下级关系。唉，直接循环一个一个找吧，感觉卧槽这不是给后来的维护人挖坑（ps可能根本不会有人接手了），算了自己也看不下去这种垃圾代码，多写写吧。 然后又开始找php语法，thinkphp函数，每天遨游在api之间QAQ（I hate it）<br>。。。mmp vim的寄存器拿不出来。</p>
-<h4 id="引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数，-array-unshift-array-push"><a href="#引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数，-array-unshift-array-push" class="headerlink" title="引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数， array_unshift, array_push"></a>引用传递只需要函数声明时声明一下就行，调用时不需要取地址，常用数组函数， array_unshift, array_push</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_select</span><span class="params">($user_id=<span class="number">0</span>)</span></span>&#123;</span><br><span class="line">    $all_id = <span class="keyword">array</span>();</span><br><span class="line">    $queue_id = <span class="keyword">array</span>($user_id);</span><br><span class="line">    $temp_id = <span class="keyword">array</span>();</span><br><span class="line">    $level = <span class="number">0</span>;</span><br><span class="line">    $res = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="keyword">empty</span>($queue_id))&#123;</span><br><span class="line">        $temp_id = <span class="keyword">array</span>();</span><br><span class="line">        $level += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(!<span class="keyword">empty</span>($queue_id))&#123;</span><br><span class="line">            $p_id = array_pop($queue_id);</span><br><span class="line">            <span class="comment">//$tmp_id = Db::name('admin_users')-&gt;where('parent_id', $p_id)-&gt;column('user_id', 'user_name','nick_name');</span></span><br><span class="line">            $tmp_id = Db::name(<span class="string">'admin_users'</span>)-&gt;where(<span class="string">'parent_id'</span>, $p_id)-&gt;select();</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">empty</span>($tmp_id))&#123;&#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">foreach</span>($tmp_id <span class="keyword">as</span> $item)&#123;</span><br><span class="line">                    array_unshift($temp_id, $item[<span class="string">'user_id'</span>]); </span><br><span class="line">                    array_push($all_id, [$item[<span class="string">'user_id'</span>], $item[<span class="string">'parent_id'</span>], $item[<span class="string">'nick_name'</span>], <span class="string">'level'</span>=&gt;$level, <span class="string">'child_num'</span>=&gt;count($tmp_id)]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        $queue_id = $temp_id;</span><br><span class="line">    &#125;</span><br><span class="line">    $level -= <span class="number">1</span>;</span><br><span class="line">    $res = <span class="string">''</span>;</span><br><span class="line">    <span class="comment">//dump('--------------');</span></span><br><span class="line">    <span class="comment">//dump($level);</span></span><br><span class="line">    $res[$user_id] = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>($all_id <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        <span class="keyword">if</span>($v[<span class="string">'level'</span>] != $level)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">empty</span>($res[$v[<span class="number">0</span>]])) $res[$v[<span class="number">0</span>]] = <span class="keyword">array</span>();		</span><br><span class="line">            array_unshift($res[$v[<span class="number">1</span>]], $v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//dump($res);</span></span><br><span class="line">    $first_s = Db::name(<span class="string">'admin_users'</span>)-&gt;where(<span class="string">'user_id'</span>, $user_id)-&gt;find();</span><br><span class="line">    <span class="comment">//dump($first_s);</span></span><br><span class="line">    $res_str = <span class="string">"&lt;option value='"</span>.$first_s[<span class="string">'user_id'</span>].<span class="string">"'&gt;"</span>.$first_s[<span class="string">'nick_name'</span>].<span class="string">"&lt;/option&gt;"</span>;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;dfs($res,$user_id, $res_str);</span><br><span class="line">    <span class="comment">//dump($res_str);</span></span><br><span class="line">    <span class="keyword">return</span> $res_str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dfs</span><span class="params">($arr,$id, &amp;$res, $level = <span class="number">0</span>)</span></span>&#123;</span><br><span class="line">    <span class="comment">//dump($level);</span></span><br><span class="line">    <span class="comment">//dump($arr[$id]);</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">empty</span>($arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">foreach</span>($arr[$id] <span class="keyword">as</span> $k =&gt; $v)&#123;</span><br><span class="line">        $prefix = str_repeat(<span class="string">'&amp;nbsp;-|&amp;nbsp;'</span>, $v[<span class="string">'level'</span>]);</span><br><span class="line">        $str = <span class="string">"&lt;option value='"</span>.$v[<span class="number">0</span>].<span class="string">"'&gt;"</span>.$prefix.$v[<span class="number">2</span>].<span class="string">"&lt;/option&gt;"</span>;</span><br><span class="line">    <span class="comment">//	dump($str);</span></span><br><span class="line">        $res .= $str;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;dfs($arr, $v[<span class="number">0</span>], $res, $level+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://freedomdr.github.io/2018/11/06/cf1060c/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="freedom">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/lufei001.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="freedomDR">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/06/cf1060c/" itemprop="url">cf1060c</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T15:22:33+08:00">
-                2018-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题记录/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题记录</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/06/cf1060c/" class="leancloud_visitors" data-flag-title="cf1060c">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>认真读完题之后，换位思考一下，其实就是找两个数组中长度最小i(1~n或m)中最小的一个，然后遍历两个数组(也可以二分查找)找答案。<br>中间写第二层循环时，j写成了i，找了好久的错误。当时一定在梦游。。。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX=<span class="number">2050</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> x[MAX], y[MAX], xs[MAX], ys[MAX];</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">b_search</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">        <span class="keyword">int</span> m = (l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr[m] == v) <span class="keyword">return</span> m;</span><br><span class="line">        <span class="keyword">if</span>(arr[m] &lt; v) l = m+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> r = m<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> main()&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n, m, xx;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">cin</span>&gt;&gt;x[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) <span class="built_in">cin</span>&gt;&gt;y[i];</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;xx;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX; i++) xs[i]=ys[i]=xx+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; n; j++)&#123;</span><br><span class="line">            sum += x[j];</span><br><span class="line">            xs[j-i] = min(xs[j-i], sum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; m; j++)&#123;</span><br><span class="line">            sum += y[j];</span><br><span class="line">            ys[j-i] = min(ys[j-i], sum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//也可以先排序再二分查找</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(xs[i]*ys[j] &lt;= xx) ans = max(ans, (i+<span class="number">1</span>)*(j+<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1776,7 +1753,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1787,7 +1764,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
