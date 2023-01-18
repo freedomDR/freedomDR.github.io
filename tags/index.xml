@@ -2,143 +2,143 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on freedomDR</title>
-    <link>http://example.org/tags/</link>
+    <link>http://freedomdr.github.io/tags/</link>
     <description>Recent content in Tags on freedomDR</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Nov 2021 11:35:21 +0800</lastBuildDate><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 11:35:21 +0800</lastBuildDate><atom:link href="http://freedomdr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>top</title>
-      <link>http://example.org/tags/top/</link>
+      <link>http://freedomdr.github.io/tags/top/</link>
       <pubDate>Wed, 17 Nov 2021 11:35:21 +0800</pubDate>
       
-      <guid>http://example.org/tags/top/</guid>
+      <guid>http://freedomdr.github.io/tags/top/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>http://example.org/tags/git/</link>
+      <link>http://freedomdr.github.io/tags/git/</link>
       <pubDate>Tue, 16 Nov 2021 21:11:40 +0800</pubDate>
       
-      <guid>http://example.org/tags/git/</guid>
+      <guid>http://freedomdr.github.io/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ssh</title>
-      <link>http://example.org/tags/ssh/</link>
+      <link>http://freedomdr.github.io/tags/ssh/</link>
       <pubDate>Tue, 16 Nov 2021 21:11:40 +0800</pubDate>
       
-      <guid>http://example.org/tags/ssh/</guid>
+      <guid>http://freedomdr.github.io/tags/ssh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>make</title>
-      <link>http://example.org/tags/make/</link>
+      <link>http://freedomdr.github.io/tags/make/</link>
       <pubDate>Sun, 31 Oct 2021 15:12:34 +0800</pubDate>
       
-      <guid>http://example.org/tags/make/</guid>
+      <guid>http://freedomdr.github.io/tags/make/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>http://example.org/tags/java/</link>
+      <link>http://freedomdr.github.io/tags/java/</link>
       <pubDate>Sun, 27 Jun 2021 17:05:17 +0800</pubDate>
       
-      <guid>http://example.org/tags/java/</guid>
+      <guid>http://freedomdr.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>maven</title>
-      <link>http://example.org/tags/maven/</link>
+      <link>http://freedomdr.github.io/tags/maven/</link>
       <pubDate>Sun, 27 Jun 2021 17:05:17 +0800</pubDate>
       
-      <guid>http://example.org/tags/maven/</guid>
+      <guid>http://freedomdr.github.io/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tmux</title>
-      <link>http://example.org/tags/tmux/</link>
+      <link>http://freedomdr.github.io/tags/tmux/</link>
       <pubDate>Thu, 03 Jun 2021 11:42:33 +0800</pubDate>
       
-      <guid>http://example.org/tags/tmux/</guid>
+      <guid>http://freedomdr.github.io/tags/tmux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iostat</title>
-      <link>http://example.org/tags/iostat/</link>
+      <link>http://freedomdr.github.io/tags/iostat/</link>
       <pubDate>Wed, 02 Jun 2021 16:00:34 +0800</pubDate>
       
-      <guid>http://example.org/tags/iostat/</guid>
+      <guid>http://freedomdr.github.io/tags/iostat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://example.org/tags/linux/</link>
+      <link>http://freedomdr.github.io/tags/linux/</link>
       <pubDate>Wed, 02 Jun 2021 16:00:34 +0800</pubDate>
       
-      <guid>http://example.org/tags/linux/</guid>
+      <guid>http://freedomdr.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sed</title>
-      <link>http://example.org/tags/sed/</link>
+      <link>http://freedomdr.github.io/tags/sed/</link>
       <pubDate>Mon, 17 May 2021 15:19:54 +0800</pubDate>
       
-      <guid>http://example.org/tags/sed/</guid>
+      <guid>http://freedomdr.github.io/tags/sed/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tar</title>
-      <link>http://example.org/tags/tar/</link>
+      <link>http://freedomdr.github.io/tags/tar/</link>
       <pubDate>Sun, 16 May 2021 10:34:13 +0800</pubDate>
       
-      <guid>http://example.org/tags/tar/</guid>
+      <guid>http://freedomdr.github.io/tags/tar/</guid>
       <description></description>
     </item>
     
     <item>
       <title>perf</title>
-      <link>http://example.org/tags/perf/</link>
+      <link>http://freedomdr.github.io/tags/perf/</link>
       <pubDate>Fri, 14 May 2021 14:30:40 +0800</pubDate>
       
-      <guid>http://example.org/tags/perf/</guid>
+      <guid>http://freedomdr.github.io/tags/perf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>常用命令</title>
-      <link>http://example.org/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://freedomdr.github.io/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Fri, 14 May 2021 14:30:40 +0800</pubDate>
       
-      <guid>http://example.org/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://freedomdr.github.io/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>doc</title>
-      <link>http://example.org/tags/doc/</link>
+      <link>http://freedomdr.github.io/tags/doc/</link>
       <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
       
-      <guid>http://example.org/tags/doc/</guid>
+      <guid>http://freedomdr.github.io/tags/doc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
-      <link>http://example.org/tags/markdown/</link>
+      <link>http://freedomdr.github.io/tags/markdown/</link>
       <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
       
-      <guid>http://example.org/tags/markdown/</guid>
+      <guid>http://freedomdr.github.io/tags/markdown/</guid>
       <description></description>
     </item>
     
