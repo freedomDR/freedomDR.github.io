@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>perf on freedomDR</title>
+    <link>http://example.org/tags/perf/</link>
+    <description>Recent content in perf on freedomDR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 14 May 2021 14:30:40 +0800</lastBuildDate><atom:link href="http://example.org/tags/perf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Perf 使用</title>
+      <link>http://example.org/posts/perf%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4/</link>
+      <pubDate>Fri, 14 May 2021 14:30:40 +0800</pubDate>
+      
+      <guid>http://example.org/posts/perf%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid>
+      <description>perf</description>
+    </item>
+    
+  </channel>
+</rss>

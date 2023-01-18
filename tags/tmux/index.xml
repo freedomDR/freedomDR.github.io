@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tmux on freedomDR</title>
+    <link>http://example.org/tags/tmux/</link>
+    <description>Recent content in tmux on freedomDR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 03 Jun 2021 11:42:33 +0800</lastBuildDate><atom:link href="http://example.org/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tmux使用</title>
+      <link>http://example.org/posts/tmux%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 03 Jun 2021 11:42:33 +0800</pubDate>
+      
+      <guid>http://example.org/posts/tmux%E4%BD%BF%E7%94%A8/</guid>
+      <description>tmux快捷键</description>
+    </item>
+    
+  </channel>
+</rss>

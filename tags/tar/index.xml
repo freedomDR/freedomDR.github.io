@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tar on freedomDR</title>
+    <link>http://example.org/tags/tar/</link>
+    <description>Recent content in tar on freedomDR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 16 May 2021 10:34:13 +0800</lastBuildDate><atom:link href="http://example.org/tags/tar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tar使用</title>
+      <link>http://example.org/posts/tar%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 16 May 2021 10:34:13 +0800</pubDate>
+      
+      <guid>http://example.org/posts/tar%E4%BD%BF%E7%94%A8/</guid>
+      <description>tar使用</description>
+    </item>
+    
+  </channel>
+</rss>
