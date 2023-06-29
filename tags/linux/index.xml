@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on freedomDR</title>
+    <link>http://freedomdr.github.io/tags/linux/</link>
+    <description>Recent content in linux on freedomDR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 02 Jun 2021 16:00:34 +0800</lastBuildDate><atom:link href="http://freedomdr.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iostat使用</title>
+      <link>http://freedomdr.github.io/posts/iostat%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 02 Jun 2021 16:00:34 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/iostat%E4%BD%BF%E7%94%A8/</guid>
+      <description>iostat</description>
+    </item>
+    
+    <item>
+      <title>Sed使用</title>
+      <link>http://freedomdr.github.io/posts/sed%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 17 May 2021 15:19:54 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/sed%E4%BD%BF%E7%94%A8/</guid>
+      <description>sed使用</description>
+    </item>
+    
+    <item>
+      <title>Tar使用</title>
+      <link>http://freedomdr.github.io/posts/tar%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 16 May 2021 10:34:13 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/tar%E4%BD%BF%E7%94%A8/</guid>
+      <description>tar使用</description>
+    </item>
+    
+    <item>
+      <title>Perf 使用</title>
+      <link>http://freedomdr.github.io/posts/perf%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4/</link>
+      <pubDate>Fri, 14 May 2021 14:30:40 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/perf%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid>
+      <description>perf</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maven on freedomDR</title>
+    <link>http://freedomdr.github.io/tags/maven/</link>
+    <description>Recent content in maven on freedomDR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 27 Jun 2021 17:05:17 +0800</lastBuildDate><atom:link href="http://freedomdr.github.io/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maven使用</title>
+      <link>http://freedomdr.github.io/posts/maven%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 27 Jun 2021 17:05:17 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/maven%E4%BD%BF%E7%94%A8/</guid>
+      <description>maven使用</description>
+    </item>
+    
+  </channel>
+</rss>
