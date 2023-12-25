@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on freedomDR</title>
+    <link>http://freedomdr.github.io/posts/</link>
+    <description>Recent content in Posts on freedomDR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 31 Oct 2023 15:38:32 +0800</lastBuildDate><atom:link href="http://freedomdr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iptables常用命令</title>
+      <link>http://freedomdr.github.io/posts/iptables%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Tue, 31 Oct 2023 15:38:32 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/iptables%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>iptables -nL 查看所有的规则 iptables -nL INPUT 查看指定链的规则</description>
+    </item>
+    
+    <item>
+      <title>grep 使用</title>
+      <link>http://freedomdr.github.io/posts/grep%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 10 Jul 2023 14:30:40 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/grep%E4%BD%BF%E7%94%A8/</guid>
+      <description>grep</description>
+    </item>
+    
+    <item>
+      <title>Top常用命令</title>
+      <link>http://freedomdr.github.io/posts/top%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 17 Nov 2021 11:35:21 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/top%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>top</description>
+    </item>
+    
+    <item>
+      <title>Git如何设置自定义ssh_key</title>
+      <link>http://freedomdr.github.io/posts/git%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89ssh_key/</link>
+      <pubDate>Tue, 16 Nov 2021 21:11:40 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/git%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89ssh_key/</guid>
+      <description>git ssh</description>
+    </item>
+    
+    <item>
+      <title>Make资料</title>
+      <link>http://freedomdr.github.io/posts/make%E8%B5%84%E6%96%99/</link>
+      <pubDate>Sun, 31 Oct 2021 15:12:34 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/make%E8%B5%84%E6%96%99/</guid>
+      <description>make</description>
+    </item>
+    
+    <item>
+      <title>Maven使用</title>
+      <link>http://freedomdr.github.io/posts/maven%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 27 Jun 2021 17:05:17 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/maven%E4%BD%BF%E7%94%A8/</guid>
+      <description>maven使用</description>
+    </item>
+    
+    <item>
+      <title>Tmux使用</title>
+      <link>http://freedomdr.github.io/posts/tmux%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 03 Jun 2021 11:42:33 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/tmux%E4%BD%BF%E7%94%A8/</guid>
+      <description>tmux快捷键</description>
+    </item>
+    
+    <item>
+      <title>iostat使用</title>
+      <link>http://freedomdr.github.io/posts/iostat%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 02 Jun 2021 16:00:34 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/iostat%E4%BD%BF%E7%94%A8/</guid>
+      <description>iostat</description>
+    </item>
+    
+    <item>
+      <title>Sed使用</title>
+      <link>http://freedomdr.github.io/posts/sed%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 17 May 2021 15:19:54 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/sed%E4%BD%BF%E7%94%A8/</guid>
+      <description>sed使用</description>
+    </item>
+    
+    <item>
+      <title>Tar使用</title>
+      <link>http://freedomdr.github.io/posts/tar%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 16 May 2021 10:34:13 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/tar%E4%BD%BF%E7%94%A8/</guid>
+      <description>tar使用</description>
+    </item>
+    
+    <item>
+      <title>Perf 使用</title>
+      <link>http://freedomdr.github.io/posts/perf%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4/</link>
+      <pubDate>Fri, 14 May 2021 14:30:40 +0800</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/perf%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid>
+      <description>perf</description>
+    </item>
+    
+    <item>
+      <title>markdown 使用</title>
+      <link>http://freedomdr.github.io/posts/%E4%BD%BF%E7%94%A8markdown/</link>
+      <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
+      
+      <guid>http://freedomdr.github.io/posts/%E4%BD%BF%E7%94%A8markdown/</guid>
+      <description>markdown 语法</description>
+    </item>
+    
+  </channel>
+</rss>
