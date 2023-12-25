@@ -22,7 +22,8 @@
       <pubDate>Tue, 31 Oct 2023 15:38:32 +0800</pubDate>
       
       <guid>http://freedomdr.github.io/posts/iptables%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>iptables -nL 查看所有的规则 iptables -nL INPUT 查看指定链的规则</description>
+      <description>iptables -nL 查看所有的规则
+iptables -nL INPUT 查看指定链的规则</description>
     </item>
     
     <item>
