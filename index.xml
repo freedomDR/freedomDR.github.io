@@ -6,8 +6,20 @@
     <description>Recent content on freedomDR</description>
     <generator>Hugo -- 0.123.7</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 21 Jun 2024 15:25:08 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Nov 2024 15:24:10 +0800</lastBuildDate>
     <atom:link href="http://freedomdr.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awk使用</title>
+      <link>http://freedomdr.github.io/posts/awk%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 21 Nov 2024 15:24:10 +0800</pubDate>
+      <guid>http://freedomdr.github.io/posts/awk%E4%BD%BF%E7%94%A8/</guid>
+      <description>基本用法
+echo xxxx | awk -F &amp;lsquo;x&amp;rsquo; &amp;lsquo;{print $1, $2, $3}&amp;rsquo;
+-F 指定分割字符
+输出转义字符
+使用&amp;quot;\x&amp;quot;格式
+echo &amp;lsquo;1,2,3&amp;rsquo; | awk -F &amp;lsquo;,&amp;rsquo; &amp;lsquo;{print &amp;ldquo;&amp;quot;&amp;quot;$1&amp;rdquo;&amp;quot;&amp;quot;}&amp;rsquo;</description>
+    </item>
     <item>
       <title>Jq使用</title>
       <link>http://freedomdr.github.io/posts/jq%E4%BD%BF%E7%94%A8/</link>
