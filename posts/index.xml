@@ -6,8 +6,16 @@
     <description>Recent content in Posts on freedomDR</description>
     <generator>Hugo -- 0.123.7</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 Nov 2024 15:24:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Dec 2024 16:14:01 +0800</lastBuildDate>
     <atom:link href="http://freedomdr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ssh批量执行</title>
+      <link>http://freedomdr.github.io/posts/ssh%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C/</link>
+      <pubDate>Tue, 17 Dec 2024 16:14:01 +0800</pubDate>
+      <guid>http://freedomdr.github.io/posts/ssh%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C/</guid>
+      <description>批量在一批机器上执行ssh命令
+for host in `cat machines.txt` do echo &amp;#34;$host start exec&amp;#34; ssh $host &amp;#34;sduo su - root -c &amp;#39;pwd&amp;#39;&amp;#34; echo &amp;#34;$host end exec&amp;#34; done </description>
+    </item>
     <item>
       <title>Awk使用</title>
       <link>http://freedomdr.github.io/posts/awk%E4%BD%BF%E7%94%A8/</link>
